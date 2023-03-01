@@ -18,10 +18,9 @@ function ApplicationContainer() {
       setLoading(false);
     }, 3000);
   }, []);
-
   return (
     <>
-      {loading ? (
+      {!loading ? (
         <WelcomeScreenContainer />
       ) : (
         <>
