@@ -1,11 +1,14 @@
-import "./App.css";
-import AppContainer from "./containers/ApplicationContainer";
+import { Box, ThemeProvider } from "@mui/material";
+import ApplicationContainer from "./containers/ApplicationContainer";
+import { Theme } from "./Themes/Theme";
 
 function App() {
   return (
-    <div className="App">
-      <AppContainer />
-    </div>
+    <ThemeProvider theme={Theme}>
+      <Box sx={{ backgroundColor: Theme.colors.background }}>
+        <ApplicationContainer />
+      </Box>
+    </ThemeProvider>
   );
 }
 export default App;

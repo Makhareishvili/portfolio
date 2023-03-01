@@ -4,6 +4,7 @@ import EducationContainer from "./EducationContainer/EducationContainer";
 import HeaderContainer from "./HeaderContainer/HeaderContainer";
 import NavbarContainer from "./NavbarContainer/NavbarContainer";
 import PortfolioContainer from "./PortfolioContainer/PortfolioContainer";
+import WelcomeScreenContainer from "./WelcomeScreenContainer/WelcomeScreenContainer";
 
 export {
   AboutContainer,
@@ -12,4 +13,5 @@ export {
   HeaderContainer,
   NavbarContainer,
   PortfolioContainer,
+  WelcomeScreenContainer,
 };
