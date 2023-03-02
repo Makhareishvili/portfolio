@@ -100,15 +100,6 @@ const useStyle = makeStyles(() => ({
     animationDelay: "800ms",
     animationName: "$listLoad",
   },
-  "@keyframes listLoad": {
-    "0%": {
-      color: `${Theme.colors.blueBolt}`,
-      transform: "translateY(-30%)",
-    },
-    "100%": {
-      transform: "translateY(0)",
-    },
-  },
   // Menu for tablets/mobiles
   mainMenuContainer: {
     width: "70%",
@@ -127,17 +118,10 @@ const useStyle = makeStyles(() => ({
       listStyleType: "none",
       display: "flex",
       flexDirection: "column",
-      cursor: "pointer",
-      "& li": {
-        margin: "0 auto 30px",
-        color: `${Theme.colors.gainsBoro}`,
-        "& a": {
-          "&:hover": {
-            color: `${Theme.colors.blueBolt}`,
-            transition: ".5s ease",
-          },
-        },
-      },
+    },
+    "& li": {
+      margin: "0 auto 30px",
+      color: `${Theme.colors.gainsBoro}`,
     },
   },
   openMenuContainer: {
@@ -145,6 +129,15 @@ const useStyle = makeStyles(() => ({
   },
   closeMenuContainer: {
     animationName: "$closeMenuAnimation",
+  },
+  "@keyframes listLoad": {
+    "0%": {
+      color: `${Theme.colors.blueBolt}`,
+      transform: "translateY(-30%)",
+    },
+    "100%": {
+      transform: "translateY(0)",
+    },
   },
   "@keyframes openMenuAnimation": {
     "0%": {
@@ -185,9 +178,13 @@ const NavbarList = (): JSX.Element => {
     </ul>
   );
 };
-const BookButton = ({ classes }: any): JSX.Element => {
+const BookButton = ({ classes, isOpen }: any): JSX.Element => {
   return (
-    <Button variant="contained" className={classes.bookButton}>
+    <Button
+      variant="contained"
+      className={classes.bookButton}
+      sx={{ display: isOpen || isOpen === null ? "flex" : "none" }}
+    >
       Book a meeting
     </Button>
   );
@@ -196,7 +193,7 @@ const BookButton = ({ classes }: any): JSX.Element => {
 const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [scrollUp, setScrollUp] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean | null>(null);
   useEffect(() => {
     function handleScroll() {
       const currentScrollPos = window.pageYOffset;
@@ -234,7 +231,7 @@ const Navbar = () => {
               sx={{ display: breakPointTablet ? "none" : "flex" }}
             >
               <NavbarList />
-              <BookButton classes={classes} />
+              <BookButton classes={classes} isOpen={isOpen} />
             </Box>
           </>
         ) : (
@@ -247,20 +244,26 @@ const Navbar = () => {
           </Box>
         )}
       </Box>
-      {isOpen ? (
-        <Box
-          className={`${classes.mainMenuContainer} ${classes.openMenuContainer}`}
-        >
-          <NavbarList />
-          <BookButton classes={classes} />
-        </Box>
-      ) : (
-        <Box
-          className={`${classes.mainMenuContainer} ${classes.closeMenuContainer}`}
-        >
-          <NavbarList />
-          <BookButton classes={classes} />
-        </Box>
+      {breakPointTablet && isOpen !== null && (
+        <>
+          {isOpen ? (
+            <>
+              <Box
+                className={`${classes.listContainer} ${classes.mainMenuContainer} ${classes.openMenuContainer}`}
+              >
+                <NavbarList />
+                <BookButton classes={classes} isOpen={isOpen} />
+              </Box>
+            </>
+          ) : (
+            <Box
+              className={`${classes.mainMenuContainer} ${classes.closeMenuContainer}`}
+            >
+              <NavbarList />
+              <BookButton classes={classes} />
+            </Box>
+          )}
+        </>
       )}
     </>
   );
