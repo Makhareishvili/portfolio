@@ -5,7 +5,6 @@ import makeStyles from "@mui/styles/makeStyles";
 import { useEffect, useState } from "react";
 import { Theme } from "../../Themes/Theme";
 import { Sling as Hamburger } from "hamburger-react";
-
 const useStyle = makeStyles(() => ({
   defaultmainContainer: {
     position: "absolute",
@@ -14,7 +13,7 @@ const useStyle = makeStyles(() => ({
     justifyContent: "space-between",
     alignItems: "center",
     padding: "20px 40px",
-    zIndex: 1,
+    zIndex: 2,
   },
   activeMainContainer: {
     position: "fixed",
@@ -82,14 +81,12 @@ const useStyle = makeStyles(() => ({
       },
     },
     "& a": {
+      fontSize: "18px",
       "&:hover": {
         color: `${Theme.colors.blueBolt}`,
         transition: ".5s ease",
       },
     },
-  },
-  tabletListContainer: {
-    backgroundColor: "blue",
   },
   bookButton: {
     // animation
@@ -107,6 +104,7 @@ const useStyle = makeStyles(() => ({
     position: "fixed",
     right: 0,
     backgroundColor: `${Theme.colors.nero}`,
+    zIndex: 1,
     // animation
     animation: ".3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
     //
@@ -235,7 +233,7 @@ const Navbar = () => {
             </Box>
           </>
         ) : (
-          <Box sx={{ zIndex: 10 }}>
+          <Box>
             <Hamburger
               toggled={isOpen}
               toggle={setIsOpen}

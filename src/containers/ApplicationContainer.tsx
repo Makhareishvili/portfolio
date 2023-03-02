@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import { useEffect, useState } from "react";
 import {
@@ -15,8 +15,45 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    padding: "0 200px",
+    // padding: "0 200px",
   },
+  "@media (min-width: 481px)": {
+    mainContainer: {
+      padding: "0 25px",
+    },
+  },
+  "@media (min-width: 769px)": {
+    mainContainer: {
+      padding: "0 50px",
+    },
+  },
+  "@media (min-width: 1200px)": {
+    mainContainer: {
+      padding: "0 100px",
+    },
+  },
+}));
+const Responsive = styled("div")(({ theme }) => ({
+  [theme.breakpoints.up("mobile")]: {
+    mainContainer: {
+      padding: "0 25px",
+    },
+  },
+  // [theme.breakpoints.up("tablet")]: {
+  //   div: {
+  //     padding: "0 50px",
+  //   },
+  // },
+  // [theme.breakpoints.up("laptop")]: {
+  //   div: {
+  //     padding: "0 100px",
+  //   },
+  // },
+  // [theme.breakpoints.up("tv")]: {
+  //   div: {
+  //     padding: "0 150px",
+  //   },
+  // },
 }));
 function ApplicationContainer() {
   const classes = useStyles();
@@ -35,13 +72,15 @@ function ApplicationContainer() {
       ) : (
         <>
           <NavbarContainer />
-          <Box className={classes.mainContainer}>
-            <HeaderContainer />
-            <AboutContainer />
-            <PortfolioContainer />
-            <EducationContainer />
-            <ContactContainer />
-          </Box>
+          <Responsive>
+            <Box className={classes.mainContainer}>
+              <HeaderContainer />
+              <AboutContainer />
+              <PortfolioContainer />
+              <EducationContainer />
+              <ContactContainer />
+            </Box>
+          </Responsive>
         </>
       )}
     </>
