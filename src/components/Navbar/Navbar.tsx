@@ -1,14 +1,26 @@
-import { ClassNames } from "@emotion/react";
 import { Box, Button } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import makeStyles from "@mui/styles/makeStyles";
+import { useEffect, useState } from "react";
 import { Theme } from "../../Themes/Theme";
-const useStyle = makeStyles({
-  mainContainer: {
+import { Sling as Hamburger } from "hamburger-react";
+
+const useStyle = makeStyles(() => ({
+  defaultmainContainer: {
+    position: "absolute",
     width: "100%",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     padding: "20px 40px",
+    zIndex: 1,
+  },
+  activeMainContainer: {
+    position: "fixed",
+  },
+  inActiveMainContainer: {
+    position: "absolute",
   },
   logoContainer: {
     display: "flex",
@@ -76,6 +88,9 @@ const useStyle = makeStyles({
       },
     },
   },
+  tabletListContainer: {
+    backgroundColor: "blue",
+  },
   bookButton: {
     // animation
     animationDuration: "100ms",
@@ -87,41 +102,167 @@ const useStyle = makeStyles({
   },
   "@keyframes listLoad": {
     "0%": {
+      color: `${Theme.colors.blueBolt}`,
       transform: "translateY(-30%)",
     },
     "100%": {
       transform: "translateY(0)",
     },
   },
-});
+  // Menu for tablets/mobiles
+  mainMenuContainer: {
+    width: "70%",
+    height: "100vh",
+    position: "fixed",
+    right: 0,
+    backgroundColor: `${Theme.colors.nero}`,
+    // animation
+    animation: ".3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
+    //
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    "& ul": {
+      listStyleType: "none",
+      display: "flex",
+      flexDirection: "column",
+      cursor: "pointer",
+      "& li": {
+        margin: "0 auto 30px",
+        color: `${Theme.colors.gainsBoro}`,
+        "& a": {
+          "&:hover": {
+            color: `${Theme.colors.blueBolt}`,
+            transition: ".5s ease",
+          },
+        },
+      },
+    },
+  },
+  openMenuContainer: {
+    animationName: "$openMenuAnimation",
+  },
+  closeMenuContainer: {
+    animationName: "$closeMenuAnimation",
+  },
+  "@keyframes openMenuAnimation": {
+    "0%": {
+      WebkitTransform: "translateX(100%)",
+      transform: "translateX(100%)",
+    },
+    "100%": {
+      WebkitTransform: "translateX(0%)",
+      transform: "translateX(0%)",
+    },
+  },
+  "@keyframes closeMenuAnimation": {
+    "0%": {
+      WebkitTransform: "translateX(0%)",
+      transform: "translateX(0%)",
+    },
+    "100%": {
+      WebkitTransform: "translateX(100%)",
+      transform: "translateX(100%)",
+    },
+  },
+}));
+const NavbarList = (): JSX.Element => {
+  return (
+    <ul>
+      <li>
+        <a>About</a>
+      </li>
+      <li>
+        <a>Portfolio</a>
+      </li>
+      <li>
+        <a>Education</a>
+      </li>
+      <li>
+        <a>Contact</a>
+      </li>
+    </ul>
+  );
+};
+const BookButton = ({ classes }: any): JSX.Element => {
+  return (
+    <Button variant="contained" className={classes.bookButton}>
+      Book a meeting
+    </Button>
+  );
+};
 
 const Navbar = () => {
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [scrollUp, setScrollUp] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  useEffect(() => {
+    function handleScroll() {
+      const currentScrollPos = window.pageYOffset;
+      setScrollUp(prevScrollPos > currentScrollPos);
+      setPrevScrollPos(currentScrollPos);
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
+  useEffect(() => {
+    // Update the CSS 'overflow' property of the 'body' element
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+  }, [isOpen]);
+  console.log("is open :", isOpen);
   const classes = useStyle();
+  const theme = useTheme();
+  const breakPointTablet = useMediaQuery(theme.breakpoints.down("laptop"));
   return (
-    <Box className={classes.mainContainer}>
-      <Box className={classes.logoContainer}>
-        <p>M</p>
+    <>
+      <Box
+        className={`${classes.defaultmainContainer} ${
+          scrollUp ? classes.activeMainContainer : classes.inActiveMainContainer
+        }`}
+      >
+        <Box className={classes.logoContainer}>
+          <p>M</p>
+        </Box>
+        {!breakPointTablet ? (
+          <>
+            <Box
+              className={classes.listContainer}
+              sx={{ display: breakPointTablet ? "none" : "flex" }}
+            >
+              <NavbarList />
+              <BookButton classes={classes} />
+            </Box>
+          </>
+        ) : (
+          <Box sx={{ zIndex: 10 }}>
+            <Hamburger
+              toggled={isOpen}
+              toggle={setIsOpen}
+              color={Theme.colors.blueBolt}
+            />
+          </Box>
+        )}
       </Box>
-      <Box className={classes.listContainer}>
-        <ul>
-          <li>
-            <a>About</a>
-          </li>
-          <li>
-            <a>Portfolio</a>
-          </li>
-          <li>
-            <a>Education</a>
-          </li>
-          <li>
-            <a>Contact</a>
-          </li>
-        </ul>
-        <Button variant="contained" className={classes.bookButton}>
-          Book a meeting
-        </Button>
-      </Box>
-    </Box>
+      {isOpen ? (
+        <Box
+          className={`${classes.mainMenuContainer} ${classes.openMenuContainer}`}
+        >
+          <NavbarList />
+          <BookButton classes={classes} />
+        </Box>
+      ) : (
+        <Box
+          className={`${classes.mainMenuContainer} ${classes.closeMenuContainer}`}
+        >
+          <NavbarList />
+          <BookButton classes={classes} />
+        </Box>
+      )}
+    </>
   );
 };
 export default Navbar;

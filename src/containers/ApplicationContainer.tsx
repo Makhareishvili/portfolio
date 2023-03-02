@@ -1,5 +1,6 @@
+import { Box } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import { useEffect, useState } from "react";
-import { Theme } from "../Themes/Theme";
 import {
   AboutContainer,
   ContactContainer,
@@ -9,7 +10,16 @@ import {
   PortfolioContainer,
   WelcomeScreenContainer,
 } from "./Containers";
+const useStyles = makeStyles(() => ({
+  mainContainer: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    padding: "0 200px",
+  },
+}));
 function ApplicationContainer() {
+  const classes = useStyles();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -20,22 +30,21 @@ function ApplicationContainer() {
   }, []);
   return (
     <>
-      {!loading ? (
+      {loading ? (
         <WelcomeScreenContainer />
       ) : (
         <>
           <NavbarContainer />
-          <HeaderContainer />
-          <AboutContainer />
-          <PortfolioContainer />
-          <EducationContainer />
-          <ContactContainer />
+          <Box className={classes.mainContainer}>
+            <HeaderContainer />
+            <AboutContainer />
+            <PortfolioContainer />
+            <EducationContainer />
+            <ContactContainer />
+          </Box>
         </>
       )}
     </>
   );
 }
 export default ApplicationContainer;
-function useEfect(arg0: () => void) {
-  throw new Error("Function not implemented.");
-}
