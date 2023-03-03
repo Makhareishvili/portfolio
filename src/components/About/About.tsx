@@ -45,45 +45,65 @@ const useStyles = makeStyles(() => ({
     },
   },
   innerPhotoContainer: {
-    // border: `3px solid ${Theme.colors.blueBolt}`,
-    // "& img": {
-    //   width: "100%",
-    // },
-    // position: "relative",
-    // width: "200px",
-    // height: "200px",
-    // "& img": {
-    //   position: "absolute",
-    //   width: "100%",
-    //   opacity: 0.8,
-    //   borderRadius: "5px",
-    //   zIndex: 1,
-    //   "&:hover": {
-    //     opacity: 1,
-    //   },
-    //   "&:hover + *": {
-    //     top: "10px",
-    //     left: "10px",
-    //     transition: "0.25s cubic-bezier(0.645,0.045,0.355,1)",
-    //   },
-    // },
+    flex: 1,
+  },
+  responsivePhotoContainer: {
+    position: "relative",
   },
   photoBackgroundContainer: {
-    // width: "100%",
-    // height: "100%",
-    // position: "absolute",
-    // backgroundColor: "blue",
-    // borderRadius: "5px",
-    // zIndex: 1,
+    backgroundColor: `${Theme.colors.blueBolt}`,
+    position: "relative",
+    zIndex: 1,
+    paddingBottom: "100%",
+    height: 0,
+    width: "100%",
+    borderRadius: "12px",
+    "& img": {
+      opacity: 0.9,
+      zIndex: 2,
+      objectFit: "cover",
+      height: "100%",
+      width: "100%",
+      position: "absolute",
+      borderRadius: "10px",
+      "&:hover": {
+        opacity: 1,
+      },
+    },
+    "&:hover + $visualContainer": {
+      margin: "15px",
+      transition: ".3s ease",
+    },
   },
   visualContainer: {
-    // position: "absolute",
-    // height: "100%",
-    // width: "100%",
-    // top: "15px",
-    // left: "15px",
-    // border: `3px solid ${Theme.colors.blueBolt}`,
-    // borderRadius: "5px",
+    width: "100%",
+    height: "100%",
+    border: `3px solid ${Theme.colors.blueBolt}`,
+    position: "absolute",
+    top: 0,
+    margin: "20px",
+    zIndex: 0,
+    borderRadius: "10px",
+  },
+  "@media (min-width: 481px)": {
+    mainContainer: {
+      margin: "0 25px",
+    },
+  },
+  "@media (min-width: 769px)": {
+    mainContainer: {
+      margin: "0 100px",
+    },
+  },
+  "@media (min-width: 1200px)": {
+    mainContainer: {
+      margin: "0 200px",
+    },
+  },
+  "@media (min-width: 1700px)": {
+    mainContainer: {
+      margin: "0 400px",
+    },
   },
 }));
 const About = () => {
@@ -125,33 +145,12 @@ const About = () => {
           </p>
         </Box>
         {/*     P h o t o        s e c t  i o n    */}
-        <Box flex={1}>
-          <Box sx={{ position: "relative" }}>
-            <Box sx={{ position: "relative", zIndex: 1 }}>
-              <img
-                src={photo}
-                alt="img"
-                style={{
-                  // maxHeight: "300px",
-                  // maxWidth: "300px",
-                  width: "100%",
-                  opacity: "1",
-                  zIndex: 2,
-                }}
-              />
+        <Box className={classes.innerPhotoContainer}>
+          <Box className={classes.responsivePhotoContainer}>
+            <Box className={classes.photoBackgroundContainer}>
+              <img src={photo} alt="img" />
             </Box>
-            <Box
-              sx={{
-                width: "100%",
-                height: "100%",
-                border: `3px solid ${Theme.colors.blueBolt}`,
-                position: "absolute",
-                top: 0,
-                margin: "20px",
-                zIndex: 0,
-                borderRadius: "5px",
-              }}
-            />
+            <Box className={classes.visualContainer} />
           </Box>
         </Box>
       </Box>
