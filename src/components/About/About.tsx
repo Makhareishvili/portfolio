@@ -5,6 +5,7 @@ import photo from "../../assets/photos/mads.png";
 const useStyles = makeStyles(() => ({
   mainContainer: {
     margin: "0 200px",
+    padding: "100px 0",
   },
   headingContainer: {
     display: "flex",

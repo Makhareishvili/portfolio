@@ -1,10 +1,11 @@
 import { Box } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import { Theme } from "../../Themes/Theme";
-import firstProjectPic from "../../assets/photos/GPT-3.png";
+import { DATA } from "../../constants/projectsData/ProjectsData";
 const useStyle = makeStyles(() => ({
   mainContainer: {
     margin: "0 400px",
+    padding: "100px 0",
     height: "100vh",
   },
   headingContainer: {
@@ -27,11 +28,12 @@ const useStyle = makeStyles(() => ({
     display: "flex",
     position: "relative",
     width: "100%",
-    gap: "20px",
+    marginBottom: "100px",
   },
   projectImgContainer: {
     // flex: 1,
     maxWidth: "70%",
+    borderRadius: "7px",
     backgroundColor: `${Theme.colors.blueBolt}`,
     "& img": {
       width: "100%",
@@ -39,6 +41,8 @@ const useStyle = makeStyles(() => ({
       opacity: 0.9,
       transitionDuration: ".2s",
       cursor: "pointer",
+      borderRadius: "5px",
+      objectFit: "cover",
       "&:hover": {
         opacity: 1,
       },
@@ -94,6 +98,28 @@ const useStyle = makeStyles(() => ({
     },
   },
 }));
+const ProjectComponent = ({ classes, projectInfo }: any): any => {
+  return (
+    <Box className={classes.contentContainer}>
+      <Box className={classes.projectImgContainer}>
+        <img src={projectInfo.pic} alt="first project img" />
+      </Box>
+      <Box className={classes.projectContentContainer}>
+        <p>{projectInfo.name}</p>
+        <p>{projectInfo.header}</p>
+        <Box className={classes.descriptionContainer}>
+          <p style={{ lineHeight: "1.3em" }}>{projectInfo.content}</p>
+        </Box>
+        <Box className={classes.techList}>
+          <p>{projectInfo.techList.first}</p>
+          <p>{projectInfo.techList.second}</p>
+          <p>{projectInfo.techList.third}</p>
+          <p>{projectInfo.techList.fourth}</p>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
 const Portfolio = () => {
   const classes = useStyle();
   return (
@@ -102,27 +128,8 @@ const Portfolio = () => {
         <p>Portfolio</p>
         <Box />
       </Box>
-      <Box className={classes.contentContainer}>
-        <Box className={classes.projectImgContainer}>
-          <img src={firstProjectPic} alt="first project img" />
-        </Box>
-        <Box className={classes.projectContentContainer}>
-          <p>GPT-3 Project</p>
-          <p>OpenAI</p>
-          <Box className={classes.descriptionContainer}>
-            <p>
-              Let's Build Something amazing with GPT-3 OpenAI. The possibilities
-              are beyond your imagination.
-            </p>
-          </Box>
-          <Box className={classes.techList}>
-            <p>TypeScript</p>
-            <p>React</p>
-            <p>HTML</p>
-            <p>CSS</p>
-          </Box>
-        </Box>
-      </Box>
+      <ProjectComponent classes={classes} projectInfo={DATA.gptProject} />
+      <ProjectComponent classes={classes} projectInfo={DATA.fullMoonProject} />
     </Box>
   );
 };
