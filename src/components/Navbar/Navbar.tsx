@@ -2,7 +2,7 @@ import { Box, Button } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import makeStyles from "@mui/styles/makeStyles";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Theme } from "../../Themes/Theme";
 import { Sling as Hamburger } from "hamburger-react";
 const useStyle = makeStyles(() => ({
@@ -13,7 +13,7 @@ const useStyle = makeStyles(() => ({
     justifyContent: "space-between",
     alignItems: "center",
     padding: "20px 40px",
-    zIndex: 2,
+    zIndex: 4,
   },
   activeMainContainer: {
     position: "fixed",
@@ -104,7 +104,7 @@ const useStyle = makeStyles(() => ({
     position: "fixed",
     right: 0,
     backgroundColor: `${Theme.colors.nero}`,
-    zIndex: 1,
+    zIndex: 3,
     // animation
     animation: ".3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
     //
@@ -192,6 +192,7 @@ const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [scrollUp, setScrollUp] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean | null>(null);
+  const navbarRef = useRef(null);
   useEffect(() => {
     function handleScroll() {
       const currentScrollPos = window.pageYOffset;
@@ -208,13 +209,14 @@ const Navbar = () => {
     // Update the CSS 'overflow' property of the 'body' element
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
-  console.log("is open :", isOpen);
+
   const classes = useStyle();
   const theme = useTheme();
   const breakPointTablet = useMediaQuery(theme.breakpoints.down("laptop"));
   return (
     <>
       <Box
+        ref={navbarRef}
         className={`${classes.defaultmainContainer} ${
           scrollUp ? classes.activeMainContainer : classes.inActiveMainContainer
         }`}

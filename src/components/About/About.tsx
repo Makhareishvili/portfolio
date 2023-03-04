@@ -66,13 +66,13 @@ const useStyles = makeStyles(() => ({
       width: "100%",
       position: "absolute",
       borderRadius: "10px",
+      transitionDuration: "0.2s",
       "&:hover": {
         opacity: 1,
       },
     },
     "&:hover + $visualContainer": {
       margin: "15px",
-      transition: ".3s ease",
     },
   },
   visualContainer: {
@@ -84,6 +84,7 @@ const useStyles = makeStyles(() => ({
     margin: "20px",
     zIndex: 0,
     borderRadius: "10px",
+    transitionDuration: "0.2s",
   },
   "@media (min-width: 481px)": {
     mainContainer: {
@@ -102,7 +103,7 @@ const useStyles = makeStyles(() => ({
   },
   "@media (min-width: 1700px)": {
     mainContainer: {
-      margin: "0 400px",
+      margin: "0 300px",
     },
   },
 }));
