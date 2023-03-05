@@ -2,31 +2,12 @@ import { Box, Theme } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
 import photo from "../../assets/photos/mads.png";
+import GeneralHeader from "../GenerealHEader/GeneralHeader";
 const useStyles = makeStyles((theme: Theme) => ({
   mainContainer: {
     padding: "100px 0",
     margin: "0px auto",
     maxWidth: "900px",
-  },
-  headingContainer: {
-    display: "flex",
-    alignItems: "center",
-    margin: "10px 0 40px",
-    minWidth: "150px",
-    "& p": {
-      fontSize: "28px",
-      color: `${DefaultThemes.colors.blueBolt}`,
-    },
-    "& div": {
-      marginLeft: "2rem",
-      backgroundColor: `${DefaultThemes.colors.dimGray}`,
-      width: "300px",
-      height: "0.005em",
-      opacity: ".2",
-      [theme.breakpoints.down("laptop")]: {
-        width: "100%",
-      },
-    },
   },
   contentContainer: {
     //
@@ -148,10 +129,7 @@ const About = () => {
   const classes = useStyles();
   return (
     <Box className={classes.mainContainer}>
-      <Box className={classes.headingContainer}>
-        <p>About Me</p>
-        <Box />
-      </Box>
+      <GeneralHeader heading={"About me"} />
       <Box className={classes.contentContainer}>
         <Box className={classes.innerContentContainer}>
           <p>

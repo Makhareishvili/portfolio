@@ -2,28 +2,13 @@ import { Box, Theme } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
 import { DATA } from "../../constants/projectsData/ProjectsData";
+import GeneralHeader from "../GenerealHEader/GeneralHeader";
 const useStyle = makeStyles((theme: Theme) => ({
   mainContainer: {
     maxWidth: "1000px",
     margin: "0px auto",
     padding: "100px 0",
     height: "100%",
-  },
-  headingContainer: {
-    display: "flex",
-    alignItems: "center",
-    margin: "10px 0 40px",
-    "& p": {
-      fontSize: "28px",
-      color: `${DefaultThemes.colors.blueBolt}`,
-    },
-    "& div": {
-      marginLeft: "2rem",
-      backgroundColor: `${DefaultThemes.colors.dimGray}`,
-      width: "300px",
-      height: "0.005em",
-      opacity: ".2",
-    },
   },
   contentContainer: {
     display: "flex",
@@ -152,10 +137,7 @@ const Portfolio = () => {
   const classes = useStyle();
   return (
     <Box className={classes.mainContainer}>
-      <Box className={classes.headingContainer}>
-        <p>Portfolio</p>
-        <Box />
-      </Box>
+      <GeneralHeader heading={"Portofio"} />
       <ProjectComponent classes={classes} projectInfo={DATA.gptProject} />
       <ProjectComponent classes={classes} projectInfo={DATA.fullMoonProject} />
       <ProjectComponent classes={classes} projectInfo={DATA.ticTacToeProject} />
