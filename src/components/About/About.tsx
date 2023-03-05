@@ -1,35 +1,48 @@
-import { Box } from "@mui/material";
+import { Box, Theme } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
-import { Theme } from "../../Themes/Theme";
+import { DefaultThemes } from "../../Themes/DefaultThemes";
 import photo from "../../assets/photos/mads.png";
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   mainContainer: {
-    margin: "0 200px",
     padding: "100px 0",
+    margin: "0px auto",
+    maxWidth: "900px",
   },
   headingContainer: {
     display: "flex",
     alignItems: "center",
     margin: "10px 0 40px",
+    minWidth: "150px",
     "& p": {
       fontSize: "28px",
-      color: `${Theme.colors.blueBolt}`,
+      color: `${DefaultThemes.colors.blueBolt}`,
     },
     "& div": {
       marginLeft: "2rem",
-      backgroundColor: `${Theme.colors.dimGray}`,
-      width: "200px",
+      backgroundColor: `${DefaultThemes.colors.dimGray}`,
+      width: "300px",
       height: "0.005em",
       opacity: ".2",
+      [theme.breakpoints.down("laptop")]: {
+        width: "100%",
+      },
     },
   },
   contentContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-    color: "white",
-    width: "100%",
-    gap: "15px",
+    //
+    display: "grid",
+    gridTemplateColumns: "3fr 2fr",
+    gap: "50px",
+    //
+    // display: "flex",
+    // justifyContent: "space-between",
+    // flexWrap: "wrap",
+    // color: "white",
+    // width: "100%",
+    // gap: "15px",
+    [theme.breakpoints.down("laptop")]: {
+      display: "block",
+    },
   },
   innerContentContainer: {
     flex: 2,
@@ -38,21 +51,44 @@ const useStyles = makeStyles(() => ({
     // backgroundColor: "green",
     minWidth: "300px",
     "& p": {
-      color: `${Theme.colors.gainsBoro}`,
+      color: `${DefaultThemes.colors.gainsBoro}`,
       lineHeight: "1.3em",
       marginBottom: "10px",
       fontSize: "15px",
       letterSpacing: "0.05em",
     },
+    "& ul": {
+      listStyleType: "none",
+      display: "flex",
+      flexWrap: "wrap",
+      "& li": {
+        width: "40%",
+        marginBottom: "10px",
+        padding: "5px",
+        color: `${DefaultThemes.colors.gainsBoro}`,
+        "&:before": {
+          content: `"➤"`,
+          padding: "5px",
+          color: `${DefaultThemes.colors.blueBolt}`,
+        },
+        "&:last-child": {
+          width: "60%",
+        },
+      },
+    },
   },
   innerPhotoContainer: {
     flex: 1,
+    maxWidth: "300px",
+    [theme.breakpoints.down("laptop")]: {
+      margin: "50px auto 0px",
+    },
   },
   responsivePhotoContainer: {
     position: "relative",
   },
   photoBackgroundContainer: {
-    backgroundColor: `${Theme.colors.blueBolt}`,
+    backgroundColor: `${DefaultThemes.colors.blueBolt}`,
     position: "relative",
     zIndex: 1,
     paddingBottom: "100%",
@@ -79,7 +115,7 @@ const useStyles = makeStyles(() => ({
   visualContainer: {
     width: "100%",
     height: "100%",
-    border: `3px solid ${Theme.colors.blueBolt}`,
+    border: `3px solid ${DefaultThemes.colors.blueBolt}`,
     position: "absolute",
     top: 0,
     margin: "20px",
@@ -87,26 +123,26 @@ const useStyles = makeStyles(() => ({
     borderRadius: "10px",
     transitionDuration: "0.2s",
   },
-  "@media (min-width: 481px)": {
-    mainContainer: {
-      margin: "0 25px",
-    },
-  },
-  "@media (min-width: 769px)": {
-    mainContainer: {
-      margin: "0 100px",
-    },
-  },
-  "@media (min-width: 1200px)": {
-    mainContainer: {
-      margin: "0 200px",
-    },
-  },
-  "@media (min-width: 1700px)": {
-    mainContainer: {
-      margin: "0 300px",
-    },
-  },
+  // "@media (min-width: 481px)": {
+  //   mainContainer: {
+  //     margin: "0 25px",
+  //   },
+  // },
+  // "@media (min-width: 769px)": {
+  //   mainContainer: {
+  //     margin: "0 100px",
+  //   },
+  // },
+  // "@media (min-width: 1200px)": {
+  //   mainContainer: {
+  //     margin: "0 200px",
+  //   },
+  // },
+  // "@media (min-width: 1700px)": {
+  //   mainContainer: {
+  //     margin: "0 300px",
+  //   },
+  // },
 }));
 const About = () => {
   const classes = useStyles();
@@ -141,10 +177,15 @@ const About = () => {
             ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book.
           </p>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
-          </p>
+          <p>Here are a few technologies I’ve been working with recently:</p>
+          <ul>
+            <li>TypeScript</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Material UI</li>
+            <li>React</li>
+            <li>Styled Componenets</li>
+          </ul>
         </Box>
         {/*     P h o t o        s e c t  i o n    */}
         <Box className={classes.innerPhotoContainer}>

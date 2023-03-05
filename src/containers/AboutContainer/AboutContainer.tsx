@@ -1,10 +1,6 @@
 import { About } from "../../components/Components";
 
 const AboutContainer = () => {
-  return (
-    <div>
-      <About />
-    </div>
-  );
+  return <About />;
 };
 export default AboutContainer;

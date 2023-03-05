@@ -1,10 +1,6 @@
 import { Portfolio } from "../../components/Components";
 const PortfolioContainer = () => {
-  return (
-    <div>
-      <Portfolio />
-    </div>
-  );
+  return <Portfolio />;
 };
 
 export default PortfolioContainer;

@@ -1,24 +1,15 @@
 import { Box, Button } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
-import { Theme } from "../../Themes/Theme";
+import { DefaultThemes } from "../../Themes/DefaultThemes";
 const useStyles = makeStyles(() => ({
-  // mainContainer: {
-  //   width: "100%",
-  //   display: "flex",
-  //   justifyContent: "flex-start",
-  //   alignItems: "center",
-  //   height: "100vh",
-  //   // color: "#ccd6f6",
-  //   // color: "#8892b0",
-  // },
   contentContainer: {
     display: "flex",
     height: "100vh",
     alignItems: "flex-start",
     justifyContent: "center",
     flexDirection: "column",
-    margin: "0 100px",
-
+    margin: "0px auto",
+    maxWidth: "1400px",
     "& p": {
       // animation
       animationDuration: "100ms",
@@ -28,14 +19,14 @@ const useStyles = makeStyles(() => ({
       "&:first-child": {
         fontSize: "18px",
         margin: "0 0 12px 4px",
-        color: `${Theme.colors.blueBolt}`,
+        color: `${DefaultThemes.colors.blueBolt}`,
         letterSpacing: ".1em",
         // animation
         animationDelay: "800ms",
         animationName: "$contentAnimation",
       },
       "&:nth-child(2)": {
-        fontSize: "68px",
+        fontSize: "4.8em",
         color: "#ccd6f6",
         lineHeight: "1.5",
         fontWeight: "bolder",
@@ -44,7 +35,7 @@ const useStyles = makeStyles(() => ({
         animationName: "$contentAnimation",
       },
       "&:nth-child(3)": {
-        fontSize: "68px",
+        fontSize: "4.8em",
         fontWeight: "bolder",
         color: "#8892b0",
         // animation
@@ -57,7 +48,7 @@ const useStyles = makeStyles(() => ({
         lineHeight: "1.3",
         marginTop: "20px",
         // color: "#8892b0",
-        color: `${Theme.colors.gainsBoro}`,
+        color: `${DefaultThemes.colors.gainsBoro}`,
         // animation
         animationDelay: "1100ms",
         animationName: "$contentAnimation",
@@ -75,7 +66,7 @@ const useStyles = makeStyles(() => ({
   },
   "@keyframes contentAnimation": {
     "0%": {
-      color: `${Theme.colors.blueBolt}`,
+      color: `${DefaultThemes.colors.blueBolt}`,
       transform: "translateY(-30%)",
     },
     "100%": {

@@ -1,10 +1,6 @@
 import { Header } from "../../components/Components";
 const HeaderContainer = () => {
-  return (
-    <div>
-      <Header />
-    </div>
-  );
+  return <Header />;
 };
 
 export default HeaderContainer;

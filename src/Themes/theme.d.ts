@@ -14,7 +14,7 @@ declare module '@mui/material/styles' {
       values: {
         mobile: number,
         tablet: number,
-        laptop: numnber,
+        laptop: number,
         desktop: number,
         tv: number,
       },
@@ -34,7 +34,7 @@ declare module '@mui/material/styles' {
       values?: {
         mobile?: number,
         tablet?: number,
-        laptop?: numnber,
+        laptop?: number,
         desktop?: number,
         tv?: number,
       },

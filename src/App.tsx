@@ -1,11 +1,11 @@
 import { Box, ThemeProvider } from "@mui/material";
 import ApplicationContainer from "./containers/ApplicationContainer";
-import { Theme } from "./Themes/Theme";
+import { DefaultThemes } from "./Themes/DefaultThemes";
 
 function App() {
   return (
-    <ThemeProvider theme={Theme}>
-      <Box sx={{ backgroundColor: Theme.colors.background }}>
+    <ThemeProvider theme={DefaultThemes}>
+      <Box sx={{ backgroundColor: DefaultThemes.colors.background }}>
         <ApplicationContainer />
       </Box>
     </ThemeProvider>

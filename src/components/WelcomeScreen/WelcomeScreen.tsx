@@ -1,12 +1,12 @@
 import { Box, styled } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { Theme } from "../../Themes/Theme";
+import { DefaultThemes } from "../../Themes/DefaultThemes";
 const useStyles = makeStyles({
   loadingText: {
     position: "relative",
     fontSize: "48px",
-    color: `${Theme.colors.background}`,
-    WebkitTextStroke: `0.1vw ${Theme.colors.nero}`,
+    color: `${DefaultThemes.colors.background}`,
+    WebkitTextStroke: `0.1vw ${DefaultThemes.colors.nero}`,
     letterSpacing: ".1em",
     "&:before": {
       content: "attr(data-text)",
@@ -15,8 +15,8 @@ const useStyles = makeStyles({
       left: 0,
       width: "0%",
       height: "100%",
-      color: `${Theme.colors.blueBolt}`,
-      WebkitTextStroke: `0vw ${Theme.colors.nero}`,
+      color: `${DefaultThemes.colors.blueBolt}`,
+      WebkitTextStroke: `0vw ${DefaultThemes.colors.nero}`,
       // borderRight: "2px solid #01fe87",
       overflow: "hidden",
       animation: "$animate 3s",
@@ -38,9 +38,9 @@ const useStyles = makeStyles({
     minHeight: "100vh",
   },
   fragment: {
-    color: `${Theme.colors.nero}`,
+    color: `${DefaultThemes.colors.nero}`,
     fontSize: "50px",
-    WebkitTextStroke: `1px ${Theme.colors.nero}`,
+    WebkitTextStroke: `1px ${DefaultThemes.colors.nero}`,
     margin: "5px",
   },
 });

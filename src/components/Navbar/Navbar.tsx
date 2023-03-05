@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import makeStyles from "@mui/styles/makeStyles";
 import { useEffect, useRef, useState } from "react";
-import { Theme } from "../../Themes/Theme";
+import { DefaultThemes } from "../../Themes/DefaultThemes";
 import { Sling as Hamburger } from "hamburger-react";
 const useStyle = makeStyles(() => ({
   defaultmainContainer: {
@@ -25,13 +25,13 @@ const useStyle = makeStyles(() => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    border: `2px solid ${Theme.colors.blueBolt}`,
+    border: `2px solid ${DefaultThemes.colors.blueBolt}`,
     borderRadius: "50%",
     height: "40px",
     width: "40px",
     "& p": {
       position: "relative",
-      color: `${Theme.colors.blueBolt}`,
+      color: `${DefaultThemes.colors.blueBolt}`,
     },
     // animation
     animationDuration: "100ms",
@@ -53,7 +53,7 @@ const useStyle = makeStyles(() => ({
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      color: `${Theme.colors.gainsBoro}`,
+      color: `${DefaultThemes.colors.gainsBoro}`,
       margin: "0 10px",
       cursor: "pointer",
       // animation
@@ -83,7 +83,7 @@ const useStyle = makeStyles(() => ({
     "& a": {
       fontSize: "18px",
       "&:hover": {
-        color: `${Theme.colors.blueBolt}`,
+        color: `${DefaultThemes.colors.blueBolt}`,
         transition: ".5s ease",
       },
     },
@@ -103,7 +103,7 @@ const useStyle = makeStyles(() => ({
     height: "100vh",
     position: "fixed",
     right: 0,
-    backgroundColor: `${Theme.colors.nero}`,
+    backgroundColor: `${DefaultThemes.colors.nero}`,
     zIndex: 3,
     // animation
     animation: ".3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
@@ -119,7 +119,7 @@ const useStyle = makeStyles(() => ({
     },
     "& li": {
       margin: "0 auto 30px",
-      color: `${Theme.colors.gainsBoro}`,
+      color: `${DefaultThemes.colors.gainsBoro}`,
     },
   },
   openMenuContainer: {
@@ -130,7 +130,7 @@ const useStyle = makeStyles(() => ({
   },
   "@keyframes listLoad": {
     "0%": {
-      color: `${Theme.colors.blueBolt}`,
+      color: `${DefaultThemes.colors.blueBolt}`,
       transform: "translateY(-30%)",
     },
     "100%": {
@@ -239,7 +239,7 @@ const Navbar = () => {
             <Hamburger
               toggled={isOpen}
               toggle={setIsOpen}
-              color={Theme.colors.blueBolt}
+              color={DefaultThemes.colors.blueBolt}
             />
           </Box>
         )}

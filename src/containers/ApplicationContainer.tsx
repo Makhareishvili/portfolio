@@ -15,21 +15,25 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    // padding: "0 200px",
   },
-  "@media (min-width: 481px)": {
+  "@media (min-width: 0px)": {
     mainContainer: {
       padding: "0 25px",
     },
   },
-  "@media (min-width: 769px)": {
+  "@media (min-width: 481px)": {
     mainContainer: {
       padding: "0 50px",
     },
   },
-  "@media (min-width: 1200px)": {
+  "@media (min-width: 769px)": {
     mainContainer: {
       padding: "0 100px",
+    },
+  },
+  "@media (min-width: 1200px)": {
+    mainContainer: {
+      padding: "0 150px",
     },
   },
 }));

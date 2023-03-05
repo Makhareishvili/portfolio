@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles";
-export const Theme = createTheme({
+export const DefaultThemes = createTheme({
   colors: {
     background: "#18191a",
     nero: "#242526",

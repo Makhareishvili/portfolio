@@ -1,12 +1,13 @@
-import { Box } from "@mui/material";
+import { Box, Theme } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
-import { Theme } from "../../Themes/Theme";
+import { DefaultThemes } from "../../Themes/DefaultThemes";
 import { DATA } from "../../constants/projectsData/ProjectsData";
-const useStyle = makeStyles(() => ({
+const useStyle = makeStyles((theme: Theme) => ({
   mainContainer: {
-    margin: "0 400px",
+    maxWidth: "1000px",
+    margin: "0px auto",
     padding: "100px 0",
-    height: "100vh",
+    height: "100%",
   },
   headingContainer: {
     display: "flex",
@@ -14,12 +15,12 @@ const useStyle = makeStyles(() => ({
     margin: "10px 0 40px",
     "& p": {
       fontSize: "28px",
-      color: `${Theme.colors.blueBolt}`,
+      color: `${DefaultThemes.colors.blueBolt}`,
     },
     "& div": {
       marginLeft: "2rem",
-      backgroundColor: `${Theme.colors.dimGray}`,
-      width: "200px",
+      backgroundColor: `${DefaultThemes.colors.dimGray}`,
+      width: "300px",
       height: "0.005em",
       opacity: ".2",
     },
@@ -34,7 +35,12 @@ const useStyle = makeStyles(() => ({
     // flex: 1,
     maxWidth: "70%",
     borderRadius: "7px",
-    backgroundColor: `${Theme.colors.blueBolt}`,
+    backgroundColor: `${DefaultThemes.colors.blueBolt}`,
+    [theme.breakpoints.down("desktop")]: {
+      maxWidth: "100%",
+      opacity: 0.9,
+      backgroundColor: "unset",
+    },
     "& img": {
       width: "100%",
       height: "100%",
@@ -43,13 +49,16 @@ const useStyle = makeStyles(() => ({
       cursor: "pointer",
       borderRadius: "5px",
       objectFit: "cover",
+      [theme.breakpoints.down("desktop")]: {
+        opacity: 0.2,
+      },
       "&:hover": {
         opacity: 1,
       },
     },
   },
   projectContentContainer: {
-    color: `${Theme.colors.gainsBoro}`,
+    color: `${DefaultThemes.colors.gainsBoro}`,
     display: "flex",
     gap: "10px",
     flexDirection: "column",
@@ -61,42 +70,62 @@ const useStyle = makeStyles(() => ({
     "& p": {
       textAlign: "right",
     },
+    [theme.breakpoints.down("desktop")]: {
+      width: "100%",
+      right: 0,
+      padding: "40px",
+      "& p": {
+        textAlign: "left",
+      },
+    },
   },
   descriptionContainer: {
     padding: "25px",
-    backgroundColor: `${Theme.colors.nero}`,
+    backgroundColor: `${DefaultThemes.colors.nero}`,
     borderRadius: "5px",
+    [theme.breakpoints.down("desktop")]: {
+      backgroundColor: "unset",
+      padding: "0",
+    },
   },
   techList: {
     display: "flex",
     justifyContent: "flex-end",
     "& p": {
       margin: "10px",
+      color: `${DefaultThemes.colors.blueBolt}`,
     },
     "& p:last-child": {
       marginRight: 0,
     },
-  },
-  "@media (min-width: 481px)": {
-    mainContainer: {
-      margin: "0 25px",
+    [theme.breakpoints.down("desktop")]: {
+      justifyContent: "flex-start",
+      padding: "0",
+      "& p:first-child": {
+        marginLeft: 0,
+      },
     },
   },
-  "@media (min-width: 769px)": {
-    mainContainer: {
-      margin: "0 100px",
-    },
-  },
-  "@media (min-width: 1200px)": {
-    mainContainer: {
-      margin: "0 200px",
-    },
-  },
-  "@media (min-width: 1700px)": {
-    mainContainer: {
-      margin: "0 300px",
-    },
-  },
+  // "@media (min-width: 481px)": {
+  //   mainContainer: {
+  //     margin: "0 25px",
+  //   },
+  // },
+  // "@media (min-width: 769px)": {
+  //   mainContainer: {
+  //     margin: "0 100px",
+  //   },
+  // },
+  // "@media (min-width: 1200px)": {
+  //   mainContainer: {
+  //     margin: "0 200px",
+  //   },
+  // },
+  // "@media (min-width: 1700px)": {
+  //   mainContainer: {
+  //     margin: "0 300px",
+  //   },
+  // },
 }));
 const ProjectComponent = ({ classes, projectInfo }: any): any => {
   return (
@@ -111,10 +140,9 @@ const ProjectComponent = ({ classes, projectInfo }: any): any => {
           <p style={{ lineHeight: "1.3em" }}>{projectInfo.content}</p>
         </Box>
         <Box className={classes.techList}>
-          <p>{projectInfo.techList.first}</p>
-          <p>{projectInfo.techList.second}</p>
-          <p>{projectInfo.techList.third}</p>
-          <p>{projectInfo.techList.fourth}</p>
+          {projectInfo.techList.map((tech: string, index: number) => (
+            <p key={tech + index}>{tech}</p>
+          ))}
         </Box>
       </Box>
     </Box>
@@ -130,6 +158,7 @@ const Portfolio = () => {
       </Box>
       <ProjectComponent classes={classes} projectInfo={DATA.gptProject} />
       <ProjectComponent classes={classes} projectInfo={DATA.fullMoonProject} />
+      <ProjectComponent classes={classes} projectInfo={DATA.ticTacToeProject} />
     </Box>
   );
 };
