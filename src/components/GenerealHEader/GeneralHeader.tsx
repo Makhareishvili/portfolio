@@ -30,7 +30,7 @@ const GeneralHeader = ({ heading }: Props) => {
   const classes = useStyle();
   return (
     <Box className={classes.headingContainer}>
-      <p>{heading}</p>
+      <p>{heading + " />"}</p>
       <Box />
     </Box>
   );

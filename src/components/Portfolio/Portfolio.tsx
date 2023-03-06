@@ -1,7 +1,7 @@
 import { Box, Theme } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
-import { DATA } from "../../constants/projectsData/ProjectsData";
+import { DATA } from "../../constants/ProjectsData/ProjectsData";
 import GeneralHeader from "../GenerealHEader/GeneralHeader";
 const useStyle = makeStyles((theme: Theme) => ({
   mainContainer: {

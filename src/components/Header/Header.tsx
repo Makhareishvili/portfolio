@@ -77,23 +77,34 @@ const useStyles = makeStyles(() => ({
 const Header = () => {
   const classes = useStyles();
   return (
-    <Box className={classes.contentContainer}>
-      <p>Hola, my name is</p>
-      <p>Levani Makhareishvili</p>
-      <p>I build things for the web.</p>
-      <p>
-        I’m a software engineer specializing in building (and occasionally
-        designing) exceptional digital experiences. Currently, I’m focused on
-        building accessible, human-centered products at Upstatement.
-      </p>
-      <Button
-        className={classes.bookButton}
-        sx={{ marginTop: "50px" }}
-        variant="contained"
-      >
-        Book a meeting
-      </Button>
-    </Box>
+    <>
+      <Box className={classes.contentContainer}>
+        {/* <Box
+          sx={{
+            backgroundColor: "blue",
+            width: "2px",
+            height: "100%",
+            position: "absolute",
+            marginLeft: "-10px",
+          }}
+        /> */}
+        <p>Hola, my name is</p>
+        <p>Levani Makhareishvili</p>
+        <p>I build things for the web.</p>
+        <p>
+          I’m a software engineer specializing in building (and occasionally
+          designing) exceptional digital experiences. Currently, I’m focused on
+          building accessible, human-centered products at Upstatement.
+        </p>
+        <Button
+          className={classes.bookButton}
+          sx={{ marginTop: "50px" }}
+          variant="contained"
+        >
+          Book a meeting
+        </Button>
+      </Box>
+    </>
   );
 };
 export default Header;
