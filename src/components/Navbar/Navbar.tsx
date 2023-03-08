@@ -1,12 +1,15 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import makeStyles from "@mui/styles/makeStyles";
 import { useEffect, useRef, useState } from "react";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
 import { Sling as Hamburger } from "hamburger-react";
 const useStyle = makeStyles(() => ({
   defaultmainContainer: {
+    backgroundColor: `rgba(
+      ${DefaultThemes.colors.backgroundInRGB.r},
+      ${DefaultThemes.colors.backgroundInRGB.g},
+      ${DefaultThemes.colors.backgroundInRGB.b},0.9)`,
     position: "absolute",
     width: "100%",
     display: "flex",
@@ -14,12 +17,22 @@ const useStyle = makeStyles(() => ({
     alignItems: "center",
     padding: "20px 40px",
     zIndex: 4,
+    boxShadow: "rgba(0, 2, 5, 0.679) 0px 10px 10px -10px",
   },
   activeMainContainer: {
     position: "fixed",
+    animation:
+      "$animationSlideBottom .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
   },
   inActiveMainContainer: {
-    position: "absolute",
+    // position: "absolute",
+    position: "fixed",
+    animation:
+      "$animationSlideTop .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
+  },
+  shadowContainer: {
+    boxShadow: "unset",
+    transition: "box-shadow 1s ease",
   },
   logoContainer: {
     display: "flex",
@@ -157,6 +170,22 @@ const useStyle = makeStyles(() => ({
       transform: "translateX(100%)",
     },
   },
+  "@keyframes animationSlideBottom": {
+    "0%": {
+      WebkitTransform: "translateY(-100%)",
+    },
+    "100%": {
+      WebkitTransform: "translateY(0%)",
+    },
+  },
+  "@keyframes animationSlideTop": {
+    "0%": {
+      WebkitTransform: "translateY(0%)",
+    },
+    "100%": {
+      WebkitTransform: "translateY(-110%)",
+    },
+  },
 }));
 const NavbarList = (): JSX.Element => {
   return (
@@ -187,10 +216,9 @@ const BookButton = ({ classes, isOpen }: any): JSX.Element => {
     </Button>
   );
 };
-
 const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [scrollUp, setScrollUp] = useState<boolean>(false);
+  const [scrollUp, setScrollUp] = useState<boolean | null>(null);
   const [isOpen, setIsOpen] = useState<boolean | null>(null);
   const navbarRef = useRef(null);
   useEffect(() => {
@@ -218,8 +246,10 @@ const Navbar = () => {
       <Box
         ref={navbarRef}
         className={`${classes.defaultmainContainer} ${
-          scrollUp ? classes.activeMainContainer : classes.inActiveMainContainer
-        }`}
+          scrollUp || scrollUp == null
+            ? classes.activeMainContainer
+            : classes.inActiveMainContainer
+        } ${prevScrollPos == 0 && classes.shadowContainer}`}
       >
         <Box className={classes.logoContainer}>
           <p>M</p>

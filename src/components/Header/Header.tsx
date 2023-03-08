@@ -99,10 +99,7 @@ const Header = () => {
           <Box className={classes.animationLine}>
             <Box />
           </Box>
-          <p>
-            Hola, my name is
-            <Box></Box>
-          </p>
+          <p>Hola, my name is</p>
           <p>Levani Makhareishvili</p>
           <p>I build things for the web.</p>
           <p>

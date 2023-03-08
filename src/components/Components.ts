@@ -5,6 +5,7 @@ import Header from "./Header/Header";
 import Navbar from "./Navbar/Navbar";
 import Portfolio from "./Portfolio/Portfolio";
 import WelcomeScreen from "./WelcomeScreen/WelcomeScreen";
+import SideElement from "./SideElement/SideElement";
 export {
     About,
     Contact,
@@ -13,4 +14,5 @@ export {
     Navbar,
     Portfolio,
     WelcomeScreen,
+    SideElement,
 }

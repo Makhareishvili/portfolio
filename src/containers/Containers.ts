@@ -5,7 +5,7 @@ import HeaderContainer from "./HeaderContainer/HeaderContainer";
 import NavbarContainer from "./NavbarContainer/NavbarContainer";
 import PortfolioContainer from "./PortfolioContainer/PortfolioContainer";
 import WelcomeScreenContainer from "./WelcomeScreenContainer/WelcomeScreenContainer";
-
+import SideElementContainer from "./SideElementContainer/SideElementContainer";
 export {
   AboutContainer,
   ContactContainer,
@@ -14,4 +14,5 @@ export {
   NavbarContainer,
   PortfolioContainer,
   WelcomeScreenContainer,
+  SideElementContainer,
 };

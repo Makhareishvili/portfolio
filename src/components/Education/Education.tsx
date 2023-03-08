@@ -80,8 +80,8 @@ const Education = () => {
             ➠ Programming Fundamentals and Object-Oriented Programming Expert:
           </p>
           <ul>
-            {EducationData.skills.oop.map((oop) => (
-              <li>{oop}</li>
+            {EducationData.skills.oop.map((oop, index) => (
+              <li key={oop + index}>{oop}</li>
             ))}
           </ul>
           <p>

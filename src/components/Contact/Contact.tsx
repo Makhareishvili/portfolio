@@ -23,10 +23,16 @@ const useStyle = makeStyles((theme: Theme) => ({
       textAlign: "center",
       color: "#8892b0",
       lineHeight: "3em",
-      fontSize: "1.5em",
+      fontSize: "1.2em",
     },
   },
-  mainInputContainer: {},
+  mainInputContainer: {
+    maxWidth: "800px",
+    margin: "0 auto",
+    padding: "20px",
+    borderRadius: "20px",
+    boxShadow: "rgba(49, 88, 179, 0.2) 0px 7px 29px 0px",
+  },
   nameEmailInputContainer: {
     marginTop: "30px",
     marginBottom: "40px",
@@ -74,9 +80,6 @@ const useStyle = makeStyles((theme: Theme) => ({
     display: "flex",
     justifyContent: "flex-end",
     marginTop: "2rem",
-    "& button": {
-      width: "20%",
-    },
   },
   contactContainer: {
     color: "#8892b0",
@@ -91,6 +94,10 @@ const useStyle = makeStyles((theme: Theme) => ({
       margin: "10px 0",
       "& p": {
         marginLeft: "10px",
+        letterSpacing: ".1em",
+      },
+      "& svg": {
+        color: `${DefaultThemes.colors.blueBolt}`,
       },
     },
   },
@@ -100,7 +107,7 @@ const Contact = () => {
   return (
     <Box className={classes.mainContainer}>
       <GeneralHeader heading={"Contact"} />
-      <Box sx={{ maxWidth: "800px", margin: "0 auto" }}>
+      <Box className={classes.mainInputContainer}>
         <h2>Send me a message!</h2>
         <h4>Got a question or proposal, or just want to say hola? Go ahead.</h4>
         <Box className={classes.nameEmailInputContainer}>
@@ -125,25 +132,21 @@ const Contact = () => {
           variant="standard"
         />
         <Box className={classes.btnContainer}>
-          <Button size="large" variant="outlined" startIcon={<SendSharpIcon />}>
+          <Button size="large" variant="outlined" endIcon={<SendSharpIcon />}>
             shoot
           </Button>
         </Box>
         <Box className={classes.contactContainer}>
           <Box>
-            <LocalPhoneSharpIcon
-              sx={{ color: `${DefaultThemes.colors.blueBolt}` }}
-            />
+            <LocalPhoneSharpIcon />
             <p>+995 574 00 04 03</p>
           </Box>
           <Box>
-            <SendSharpIcon sx={{ color: `${DefaultThemes.colors.blueBolt}` }} />
+            <SendSharpIcon sx={{ rotate: "-45deg" }} />
             <p>levanimakharei7li@gmail.com</p>
           </Box>
           <Box>
-            <LocationCitySharpIcon
-              sx={{ color: `${DefaultThemes.colors.blueBolt}` }}
-            />
+            <LocationCitySharpIcon />
             <p>Tbilisi,Georgia</p>
           </Box>
         </Box>

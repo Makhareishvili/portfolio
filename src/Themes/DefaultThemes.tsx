@@ -7,6 +7,11 @@ export const DefaultThemes = createTheme({
     dimGray: "#e4e6eb",
     gainsBoro: "#b0b3b8",
     blueBolt: "#00BCF3",
+    backgroundInRGB: {
+      r: "24",
+      g: "25",
+      b: "26",
+    },
   },
   breakpoints: {
     values: {

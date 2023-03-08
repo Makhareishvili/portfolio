@@ -10,3 +10,17 @@ body {
   min-height: 100vh;
   font-family: "Comfortaa", cursive;
 }
+/*  */
+::-webkit-scrollbar {
+  width: 6px;
+  display: flex;
+  background-color: #18191a;
+}
+::-webkit-scrollbar-track {
+  margin: 3px 0;
+}
+::-webkit-scrollbar-thumb {
+  margin: 20px;
+  background-color: #b0b0b0;
+  border-radius: 10px;
+}

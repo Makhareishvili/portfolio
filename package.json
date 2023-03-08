@@ -19,7 +19,8 @@
     "hamburger-react": "^2.5.0",
     "material-ui-icons": "^1.0.0-beta.36",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-scrollbars-custom": "^4.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

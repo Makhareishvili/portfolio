@@ -1,19 +1,8 @@
 import gptPic from '../../assets/photos/GPT-3.png'
 import fullMoon from '../../assets/photos/full-moon.png'
 import ticTac from '../../assets/photos/ticTac.png'
-export const DATA = {
-    gptProject: {
-        pic: gptPic,
-        name: "GPT-3 Project",
-        header: "OpenAI",
-        content: "Let's Build Something amazing with GPT-3 OpenAI. The possibilities are beyond your imagination.",
-        techList: [
-            "TypeScript",
-            "React",
-            "CSS",
-        ],
-    },
-    fullMoonProject: {
+export const DATA = [
+    {
         pic: fullMoon,
         name: "FULL-MOON Project",
         header: "Restaurant",
@@ -24,7 +13,18 @@ export const DATA = {
             "CSS",
         ]
     },
-    ticTacToeProject: {
+    {
+        pic: gptPic,
+        name: "GPT-3 Project",
+        header: "OpenAI",
+        content: "Let's Build Something amazing with GPT-3 OpenAI. The possibilities are beyond your imagination.",
+        techList: [
+            "TypeScript",
+            "React",
+            "CSS",
+        ],
+    },
+    {
         pic: ticTac,
         name: "Tic tac toe Project",
         header: "Game",
@@ -35,4 +35,4 @@ export const DATA = {
             "CSS",
         ]
     }
-}
+]

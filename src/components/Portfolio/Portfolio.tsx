@@ -91,6 +91,23 @@ const useStyle = makeStyles((theme: Theme) => ({
       },
     },
   },
+  replacedContentContainer: {
+    justifyContent: "flex-end",
+  },
+  replacedProjectContentContainer: {
+    left: 0,
+    "& p": {
+      textAlign: "left",
+    },
+  },
+  replacedTechList: {
+    justifyContent: "flex-start",
+    "& p": {
+      "& p:last-child": {
+        marginLeft: 0,
+      },
+    },
+  },
   // "@media (min-width: 481px)": {
   //   mainContainer: {
   //     margin: "0 25px",
@@ -112,19 +129,31 @@ const useStyle = makeStyles((theme: Theme) => ({
   //   },
   // },
 }));
-const ProjectComponent = ({ classes, projectInfo }: any): any => {
+const ProjectComponent = ({ index, classes, projectInfo }: any): any => {
   return (
-    <Box className={classes.contentContainer}>
+    <Box
+      className={`${classes.contentContainer} ${
+        index == 1 && classes.replacedContentContainer
+      }`}
+    >
       <Box className={classes.projectImgContainer}>
         <img src={projectInfo.pic} alt="first project img" />
       </Box>
-      <Box className={classes.projectContentContainer}>
+      <Box
+        className={`${classes.projectContentContainer} ${
+          index == 1 && classes.replacedProjectContentContainer
+        }`}
+      >
         <p>{projectInfo.name}</p>
         <p>{projectInfo.header}</p>
         <Box className={classes.descriptionContainer}>
           <p style={{ lineHeight: "1.3em" }}>{projectInfo.content}</p>
         </Box>
-        <Box className={classes.techList}>
+        <Box
+          className={`${classes.techList} ${
+            index == 1 && classes.replacedTechList
+          }`}
+        >
           {projectInfo.techList.map((tech: string, index: number) => (
             <p key={tech + index}>{tech}</p>
           ))}
@@ -138,9 +167,17 @@ const Portfolio = () => {
   return (
     <Box className={classes.mainContainer}>
       <GeneralHeader heading={"Portofio"} />
-      <ProjectComponent classes={classes} projectInfo={DATA.gptProject} />
-      <ProjectComponent classes={classes} projectInfo={DATA.fullMoonProject} />
-      <ProjectComponent classes={classes} projectInfo={DATA.ticTacToeProject} />
+      {DATA.map((data, ind) => {
+        let index = ind % 2;
+        return (
+          <ProjectComponent
+            key={ind}
+            index={index}
+            classes={classes}
+            projectInfo={data}
+          />
+        );
+      })}
     </Box>
   );
 };

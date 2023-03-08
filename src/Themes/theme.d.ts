@@ -9,6 +9,11 @@ declare module '@mui/material/styles' {
       dimGray: string,
       gainsBoro: string
       blueBolt: string,
+      backgroundInRGB: {
+        r: string;
+        g: string;
+        b: string;
+    }
     }
     breakpoints: {
       values: {
@@ -29,6 +34,11 @@ declare module '@mui/material/styles' {
       dimGray: string,
       gainsBoro: string
       blueBolt: string,
+      backgroundInRGB: {
+        r: string;
+        g: string;
+        b: string;
+    }
     }
     breakpoints?: {
       values?: {

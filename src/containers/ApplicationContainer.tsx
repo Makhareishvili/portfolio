@@ -8,6 +8,7 @@ import {
   HeaderContainer,
   NavbarContainer,
   PortfolioContainer,
+  SideElementContainer,
   WelcomeScreenContainer,
 } from "./Containers";
 const useStyles = makeStyles(() => ({
@@ -16,6 +17,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     width: "100%",
   },
+
   "@media (min-width: 0px)": {
     mainContainer: {
       padding: "0 25px",
@@ -59,7 +61,7 @@ const Responsive = styled("div")(({ theme }) => ({
   //   },
   // },
 }));
-function ApplicationContainer() {
+const ApplicationContainer = () => {
   const classes = useStyles();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -76,6 +78,7 @@ function ApplicationContainer() {
       ) : (
         <>
           <NavbarContainer />
+          <SideElementContainer />
           <Responsive>
             <Box className={classes.mainContainer}>
               <HeaderContainer />
@@ -89,5 +92,5 @@ function ApplicationContainer() {
       )}
     </>
   );
-}
+};
 export default ApplicationContainer;
