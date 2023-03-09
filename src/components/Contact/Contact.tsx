@@ -7,6 +7,8 @@ import LocalPhoneSharpIcon from "@mui/icons-material/LocalPhoneSharp";
 import SendSharpIcon from "@mui/icons-material/SendSharp";
 import LocationCitySharpIcon from "@mui/icons-material/LocationCitySharp";
 import { useRef, useState } from "react";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+
 const useStyle = makeStyles((theme: Theme) => ({
   mainContainer: {
     // color: "#ccd6f6",
@@ -103,30 +105,67 @@ const useStyle = makeStyles((theme: Theme) => ({
       },
     },
   },
+  displayMessageContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    color: `#8892b0`,
+    background: "#1e1f22",
+    width: "20%",
+    height: "200px",
+    position: "fixed",
+    borderRadius: "10px",
+    top: 10,
+    left: "40%",
+    zIndex: 4,
+    // animation
+    animationDuration: "300ms",
+    animationTimingFunction: "ease-in",
+    animationFillMode: "forwards",
+    transform: "scale(0)",
+    // animationDelay: "100ms",
+    animationName: "$displayLoad",
+    "& svg": {
+      color: "green",
+      fontSize: "3em",
+      marginTop: "20px",
+    },
+    "& h2": { lineHeight: "2em" },
+  },
+  "@keyframes displayLoad": {
+    "0%": {
+      transform: "translateY(-110%)",
+    },
+    "100%": {
+      transform: "translateY(0)",
+    },
+  },
 }));
 const Contact = () => {
   const [disable, setDisable] = useState(false);
+  const [displayVisible, setDisplayVisible] = useState(false);
   const classes = useStyle();
   const form = useRef<any>();
   const sendEmail = (e: any) => {
-    setDisable(true);
+    // setDisable(true);
     e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_ki54oti",
-        "template_x5manfo",
-        form.current,
-        "NcQ8ACTHeTBRKO5wg"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setDisable(false);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    // emailjs
+    //   .sendForm(
+    //     "service_ki54oti",
+    //     "template_x5manfo",
+    //     form.current,
+    //     "NcQ8ACTHeTBRKO5wg"
+    //   )
+    //   .then(
+    //     (result) => {
+    //       console.log(result.text);
+    //       setDisable(false);
+    //     },
+    //     (error) => {
+    //       console.log(error.text);
+    //     }
+    //   );
+    handleDisplayVisible();
   };
   const GetFields = () => {
     return (
@@ -177,29 +216,46 @@ const Contact = () => {
       </>
     );
   };
+  const handleDisplayVisible = () => {
+    setDisplayVisible(true);
+    setTimeout(() => {
+      setDisplayVisible(false);
+    }, 3000);
+  };
   return (
-    <Box className={classes.mainContainer}>
-      <GeneralHeader heading={"Contact"} />
-      <Box className={classes.mainInputContainer}>
-        <h2>Send me a message!</h2>
-        <h4>Got a question or proposal, or just want to say hola? Go ahead.</h4>
-        <GetFields />
-        <Box className={classes.contactContainer}>
-          <Box>
-            <LocalPhoneSharpIcon />
-            <p>+995 574 00 04 03</p>
-          </Box>
-          <Box>
-            <SendSharpIcon sx={{ rotate: "-45deg" }} />
-            <p>levanimakharei7li@gmail.com</p>
-          </Box>
-          <Box>
-            <LocationCitySharpIcon />
-            <p>Tbilisi,Georgia</p>
+    <>
+      <Box className={classes.mainContainer}>
+        <GeneralHeader heading={"Contact"} />
+        <Box className={classes.mainInputContainer}>
+          <h2>Send me a message!</h2>
+          <h4>
+            Got a question or proposal, or just want to say hola? Go ahead.
+          </h4>
+          <GetFields />
+          <Box className={classes.contactContainer}>
+            <Box>
+              <LocalPhoneSharpIcon />
+              <p>+995 574 00 04 03</p>
+            </Box>
+            <Box>
+              <SendSharpIcon sx={{ rotate: "-45deg" }} />
+              <p>levanimakharei7li@gmail.com</p>
+            </Box>
+            <Box>
+              <LocationCitySharpIcon />
+              <p>Tbilisi,Georgia</p>
+            </Box>
           </Box>
         </Box>
       </Box>
-    </Box>
+      {displayVisible && (
+        <Box className={classes.displayMessageContainer}>
+          <CheckCircleOutlineIcon sx={{ color: "green" }} />
+          <h2>Thank you!</h2>
+          <p>Message successfully sent.</p>
+        </Box>
+      )}
+    </>
   );
 };
 export default Contact;
