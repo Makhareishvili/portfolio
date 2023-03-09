@@ -25,6 +25,9 @@ const useStyle = makeStyles(() => ({
       justifyContent: "space-between",
       alignItems: "center",
       height: "100%",
+      "& a": {
+        color: `#8892b0`,
+      },
       "& svg": {
         fontSize: "1.5rem",
         cursor: "pointer",
@@ -58,6 +61,8 @@ const useStyle = makeStyles(() => ({
       alignItems: "center",
       height: "100%",
       "& a": {
+        color: "#8892b0",
+        textDecoration: "none",
         fontSize: "14px",
         cursor: "pointer",
         writingMode: "vertical-rl",
@@ -92,12 +97,12 @@ const SideElement = () => {
       <Box className={classes.leftContainer}>
         <ul>
           <li>
-            <a>
+            <a href="https://github.com/Makhareishvili">
               <GitHubIcon fontSize="large" />
             </a>
           </li>
           <li>
-            <a>
+            <a href="https://www.instagram.com/makharei7liii">
               <InstagramIcon />
             </a>
           </li>
@@ -112,7 +117,7 @@ const SideElement = () => {
             </a>
           </li>
           <li>
-            <a>
+            <a href="https://www.facebook.com/Levani.Makhareishvili.0">
               <FacebookIcon />
             </a>
           </li>
@@ -122,7 +127,9 @@ const SideElement = () => {
       <Box className={classes.rightContainer}>
         <ul>
           <li>
-            <a>levanimakharei7li@gmail.com</a>
+            <a href="mailto:levanimakharei7li@gmail.com">
+              levanimakharei7li@gmail.com
+            </a>
           </li>
           <Box />
         </ul>

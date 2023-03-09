@@ -1,6 +1,7 @@
 import { Box, styled } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import { useEffect, useState } from "react";
+import { DefaultThemes } from "../Themes/DefaultThemes";
 import {
   AboutContainer,
   ContactContainer,
@@ -16,6 +17,7 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "column",
     width: "100%",
+    backgroundColor: `${DefaultThemes.colors.background}`,
   },
 
   "@media (min-width: 0px)": {

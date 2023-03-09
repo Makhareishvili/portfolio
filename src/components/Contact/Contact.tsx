@@ -1,3 +1,4 @@
+import emailjs from "@emailjs/browser";
 import { Box, Button, TextField, Theme } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
@@ -5,6 +6,7 @@ import GeneralHeader from "../GenerealHEader/GeneralHeader";
 import LocalPhoneSharpIcon from "@mui/icons-material/LocalPhoneSharp";
 import SendSharpIcon from "@mui/icons-material/SendSharp";
 import LocationCitySharpIcon from "@mui/icons-material/LocationCitySharp";
+import { useRef, useState } from "react";
 const useStyle = makeStyles((theme: Theme) => ({
   mainContainer: {
     // color: "#ccd6f6",
@@ -29,7 +31,7 @@ const useStyle = makeStyles((theme: Theme) => ({
   mainInputContainer: {
     maxWidth: "800px",
     margin: "0 auto",
-    padding: "20px",
+    padding: "80px",
     borderRadius: "20px",
     boxShadow: "rgba(49, 88, 179, 0.2) 0px 7px 29px 0px",
   },
@@ -103,39 +105,85 @@ const useStyle = makeStyles((theme: Theme) => ({
   },
 }));
 const Contact = () => {
+  const [disable, setDisable] = useState(false);
   const classes = useStyle();
+  const form = useRef<any>();
+  const sendEmail = (e: any) => {
+    setDisable(true);
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_ki54oti",
+        "template_x5manfo",
+        form.current,
+        "NcQ8ACTHeTBRKO5wg"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setDisable(false);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+  const GetFields = () => {
+    return (
+      <>
+        <form ref={form} onSubmit={sendEmail}>
+          <Box className={classes.nameEmailInputContainer}>
+            <TextField
+              className={classes.textField}
+              size="medium"
+              label="Your Name"
+              variant="standard"
+              type="text"
+              name="user_name"
+              required
+            />
+            <TextField
+              className={classes.textField}
+              label="Email Address"
+              variant="standard"
+              type="email"
+              name="user_email"
+              required
+            />
+          </Box>
+          <TextField
+            fullWidth
+            multiline
+            rows={5} // set the number of rows here
+            className={classes.textField}
+            label="Your Message"
+            variant="standard"
+            name="message"
+            required
+          />
+          <Box className={classes.btnContainer}>
+            <Button
+              size="large"
+              variant="outlined"
+              type="submit"
+              value="Send"
+              endIcon={<SendSharpIcon />}
+              disabled={disable}
+            >
+              shoot
+            </Button>
+          </Box>
+        </form>
+      </>
+    );
+  };
   return (
     <Box className={classes.mainContainer}>
       <GeneralHeader heading={"Contact"} />
       <Box className={classes.mainInputContainer}>
         <h2>Send me a message!</h2>
         <h4>Got a question or proposal, or just want to say hola? Go ahead.</h4>
-        <Box className={classes.nameEmailInputContainer}>
-          <TextField
-            className={classes.textField}
-            size="medium"
-            label="Your Name"
-            variant="standard"
-          />
-          <TextField
-            className={classes.textField}
-            label="Email Address"
-            variant="standard"
-          />
-        </Box>
-        <TextField
-          fullWidth
-          multiline
-          rows={5} // set the number of rows here
-          className={classes.textField}
-          label="Your Message"
-          variant="standard"
-        />
-        <Box className={classes.btnContainer}>
-          <Button size="large" variant="outlined" endIcon={<SendSharpIcon />}>
-            shoot
-          </Button>
-        </Box>
+        <GetFields />
         <Box className={classes.contactContainer}>
           <Box>
             <LocalPhoneSharpIcon />

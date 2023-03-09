@@ -108,6 +108,7 @@ const Header = () => {
             on building accessible, human-centered products at Upstatement.
           </p>
           <Button
+            href="mailto:levanimakharei7li@gmail.com"
             className={classes.bookButton}
             sx={{ marginTop: "50px" }}
             variant="contained"

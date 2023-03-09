@@ -102,6 +102,7 @@ const useStyle = makeStyles(() => ({
     },
   },
   bookButton: {
+    textDecoration: "none",
     // animation
     animationDuration: "100ms",
     animationTimingFunction: "ease-in",
@@ -207,13 +208,13 @@ const NavbarList = (): JSX.Element => {
 };
 const BookButton = ({ classes, isOpen }: any): JSX.Element => {
   return (
-    <Button
-      variant="contained"
+    <a
+      style={{ display: isOpen || isOpen === null ? "flex" : "none" }}
       className={classes.bookButton}
-      sx={{ display: isOpen || isOpen === null ? "flex" : "none" }}
+      href="mailto:levanimakharei7li@gmail.com"
     >
-      Book a meeting
-    </Button>
+      <Button variant="contained">Book a meeting</Button>
+    </a>
   );
 };
 const Navbar = () => {

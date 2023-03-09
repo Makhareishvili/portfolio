@@ -36,6 +36,7 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
     minHeight: "100vh",
+    backgroundColor: `${DefaultThemes.colors.background}`,
   },
   fragment: {
     color: `${DefaultThemes.colors.nero}`,
