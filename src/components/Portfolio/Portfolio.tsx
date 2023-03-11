@@ -3,6 +3,8 @@ import makeStyles from "@mui/styles/makeStyles";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
 import { DATA } from "../../constants/ProjectsData/ProjectsData";
 import GeneralHeader from "../GenerealHEader/GeneralHeader";
+import { motion } from "framer-motion";
+
 const useStyle = makeStyles((theme: Theme) => ({
   mainContainer: {
     maxWidth: "1000px",
@@ -162,10 +164,27 @@ const ProjectComponent = ({ index, classes, projectInfo }: any): any => {
     </Box>
   );
 };
+const divAnimate = {
+  offscreen: { opacity: 0, y: 100 },
+  onscreen: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.2,
+      duration: 1,
+    },
+  },
+};
 const Portfolio = () => {
   const classes = useStyle();
   return (
-    <Box className={classes.mainContainer}>
+    <motion.div
+      initial={"offscreen"}
+      whileInView={"onscreen"}
+      viewport={{ once: true, amount: 0.1 }}
+      variants={divAnimate}
+      className={classes.mainContainer}
+    >
       <GeneralHeader heading={"Portofio"} />
       {DATA.map((data, ind) => {
         let index = ind % 2;
@@ -178,7 +197,7 @@ const Portfolio = () => {
           />
         );
       })}
-    </Box>
+    </motion.div>
   );
 };
 export default Portfolio;

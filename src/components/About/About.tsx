@@ -3,6 +3,7 @@ import makeStyles from "@mui/styles/makeStyles";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
 import photo from "../../assets/photos/mads.png";
 import GeneralHeader from "../GenerealHEader/GeneralHeader";
+import { motion } from "framer-motion";
 const useStyles = makeStyles((theme: Theme) => ({
   mainContainer: {
     padding: "100px 0",
@@ -125,10 +126,27 @@ const useStyles = makeStyles((theme: Theme) => ({
   //   },
   // },
 }));
+const divAnimate = {
+  offscreen: { opacity: 0, y: 100 },
+  onscreen: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.2,
+      duration: 1,
+    },
+  },
+};
 const About = () => {
   const classes = useStyles();
   return (
-    <Box className={classes.mainContainer}>
+    <motion.div
+      initial={"offscreen"}
+      whileInView={"onscreen"}
+      viewport={{ once: true, amount: 0.1 }}
+      variants={divAnimate}
+      className={classes.mainContainer}
+    >
       <GeneralHeader heading={"About me"} />
       <Box className={classes.contentContainer}>
         <Box className={classes.innerContentContainer}>
@@ -175,7 +193,7 @@ const About = () => {
           </Box>
         </Box>
       </Box>
-    </Box>
+    </motion.div>
   );
 };
 export default About;
