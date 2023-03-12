@@ -9,15 +9,15 @@ const useStyles = makeStyles(() => ({
     justifyContent: "center",
     flexDirection: "column",
     margin: "0px auto",
-    maxWidth: "1400px",
+    maxWidth: "1000px",
     "& p": {
       // animation
       animationDuration: "100ms",
       animationTimingFunction: "ease-in",
       animationFillMode: "forwards",
       transform: "scale(0)",
-      "&:nth-child(2)": {
-        fontSize: "18px",
+      "&:nth-child(1)": {
+        fontSize: "16px",
         margin: "0 0 12px 4px",
         color: `${DefaultThemes.colors.blueBolt}`,
         letterSpacing: ".1em",
@@ -25,8 +25,8 @@ const useStyles = makeStyles(() => ({
         animationDelay: "800ms",
         animationName: "$contentAnimation",
       },
-      "&:nth-child(3)": {
-        fontSize: "4.8em",
+      "&:nth-child(2)": {
+        fontSize: "77px",
         color: "#ccd6f6",
         lineHeight: "1.5",
         fontWeight: "bolder",
@@ -34,16 +34,16 @@ const useStyles = makeStyles(() => ({
         animationDelay: "900ms",
         animationName: "$contentAnimation",
       },
-      "&:nth-child(4)": {
-        fontSize: "4.8em",
+      "&:nth-child(3)": {
+        fontSize: "77px",
         fontWeight: "bolder",
         color: "#8892b0",
         // animation
         animationDelay: "1000ms",
         animationName: "$contentAnimation",
       },
-      "&:nth-child(5)": {
-        fontSize: "18px",
+      "&:nth-child(4)": {
+        fontSize: "20px",
         maxWidth: "700px",
         lineHeight: "1.3",
         marginTop: "20px",
@@ -53,22 +53,6 @@ const useStyles = makeStyles(() => ({
         animationDelay: "1100ms",
         animationName: "$contentAnimation",
       },
-    },
-  },
-  animationLine: {
-    backgroundColor: `#0c0c9b`,
-    width: "1px",
-    height: "458%",
-    position: "absolute",
-    marginLeft: "-25px",
-    marginTop: "13px",
-    "& div": {
-      width: "10px",
-      height: "10px",
-      border: "1px solid #0c0c9b",
-      borderRadius: "50%",
-      marginLeft: "-4.7px",
-      marginTop: "-10px",
     },
   },
   bookButton: {
@@ -95,27 +79,26 @@ const Header = () => {
   return (
     <>
       <Box className={classes.contentContainer}>
-        <Box>
-          <Box className={classes.animationLine}>
-            <Box />
-          </Box>
-          <p>Hola, my name is</p>
-          <p>Levani Makhareishvili</p>
-          <p>I build things for the web.</p>
-          <p>
-            I’m a software engineer specializing in building (and occasionally
-            designing) exceptional digital experiences. Currently, I’m focused
-            on building accessible, human-centered products at Upstatement.
-          </p>
-          <Button
-            href="mailto:levanimakharei7li@gmail.com"
-            className={classes.bookButton}
-            sx={{ marginTop: "50px" }}
-            variant="contained"
-          >
-            Book a meeting
-          </Button>
-        </Box>
+        <p>Hola, my name is</p>
+        <p>Levani Makhareishvili</p>
+        <p>I build things for the web.</p>
+        <p>
+          I’m a software engineer specializing in building (and occasionally
+          designing) exceptional digital experiences. Currently, I’m focused on
+          building accessible, human-centered products at Upstatement.
+        </p>
+        <Button
+          href="mailto:levanimakharei7li@gmail.com"
+          className={classes.bookButton}
+          sx={{
+            marginTop: "50px",
+            backgroundColor: "#2c87e9",
+            borderRadius: "20px",
+          }}
+          variant="contained"
+        >
+          Book a meeting
+        </Button>
       </Box>
     </>
   );

@@ -146,6 +146,7 @@ const About = () => {
       viewport={{ once: true, amount: 0.1 }}
       variants={divAnimate}
       className={classes.mainContainer}
+      id="about"
     >
       <GeneralHeader heading={"About me"} />
       <Box className={classes.contentContainer}>

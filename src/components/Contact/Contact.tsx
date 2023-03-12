@@ -224,7 +224,7 @@ const Contact = () => {
   };
   return (
     <>
-      <Box className={classes.mainContainer}>
+      <Box id="contact" className={classes.mainContainer}>
         <GeneralHeader heading={"Contact"} />
         <Box className={classes.mainInputContainer}>
           <h2>Send me a message!</h2>

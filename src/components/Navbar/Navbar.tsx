@@ -4,6 +4,7 @@ import makeStyles from "@mui/styles/makeStyles";
 import { useEffect, useRef, useState } from "react";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
 import { Sling as Hamburger } from "hamburger-react";
+import { Link } from "react-scroll";
 const useStyle = makeStyles(() => ({
   defaultmainContainer: {
     backgroundColor: `rgba(
@@ -192,16 +193,24 @@ const NavbarList = (): JSX.Element => {
   return (
     <ul>
       <li>
-        <a>About</a>
+        <Link smooth={true} to="about" duration={1000} offset={0}>
+          About
+        </Link>
       </li>
       <li>
-        <a>Portfolio</a>
+        <Link smooth={true} to="portfolio" duration={1000} offset={0}>
+          Portfolio
+        </Link>
       </li>
       <li>
-        <a>Education</a>
+        <Link smooth={true} to="education" duration={1000} offset={0}>
+          Education
+        </Link>
       </li>
       <li>
-        <a>Contact</a>
+        <Link smooth={true} to="contact" duration={1000} offset={200}>
+          Contact
+        </Link>
       </li>
     </ul>
   );
@@ -213,7 +222,12 @@ const BookButton = ({ classes, isOpen }: any): JSX.Element => {
       className={classes.bookButton}
       href="mailto:levanimakharei7li@gmail.com"
     >
-      <Button variant="contained">Book a meeting</Button>
+      <Button
+        sx={{ backgroundColor: "#2c87e9", borderRadius: "20px" }}
+        variant="contained"
+      >
+        Book a meeting
+      </Button>
     </a>
   );
 };
@@ -253,7 +267,9 @@ const Navbar = () => {
         } ${prevScrollPos == 0 && classes.shadowContainer}`}
       >
         <Box className={classes.logoContainer}>
-          <p>M</p>
+          <p>
+            <a>M</a>
+          </p>
         </Box>
         {!breakPointTablet ? (
           <>

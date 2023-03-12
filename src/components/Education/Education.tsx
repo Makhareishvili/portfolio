@@ -66,6 +66,7 @@ const Education = () => {
       viewport={{ once: true, amount: 0.1 }}
       variants={divAnimate}
       className={classes.mainContainer}
+      id="education"
     >
       <GeneralHeader heading={"Education"} />
       <h2>Passion for the Tech Industry and technical skills</h2>

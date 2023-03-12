@@ -184,6 +184,7 @@ const Portfolio = () => {
       viewport={{ once: true, amount: 0.1 }}
       variants={divAnimate}
       className={classes.mainContainer}
+      id="portfolio"
     >
       <GeneralHeader heading={"Portofio"} />
       {DATA.map((data, ind) => {
