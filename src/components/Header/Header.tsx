@@ -1,7 +1,7 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Theme } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   contentContainer: {
     display: "flex",
     height: "100vh",
@@ -16,8 +16,72 @@ const useStyles = makeStyles(() => ({
       animationTimingFunction: "ease-in",
       animationFillMode: "forwards",
       transform: "scale(0)",
+      [theme.breakpoints.up("mobile")]: {
+        "&:nth-child(4)": {
+          fontSize: "12px",
+        },
+        "&:nth-child(1)": {
+          fontSize: "10px",
+        },
+        "&:nth-child(2)": {
+          fontSize: "20px",
+        },
+        "&:nth-child(3)": {
+          fontSize: "20px",
+        },
+      },
+      [theme.breakpoints.up("tablet")]: {
+        "&:nth-child(4)": {
+          fontSize: "14px",
+        },
+        "&:nth-child(1)": {
+          fontSize: "12px",
+        },
+        "&:nth-child(2)": {
+          fontSize: "27px",
+        },
+        "&:nth-child(3)": {
+          fontSize: "27px",
+        },
+      },
+      [theme.breakpoints.up("laptop")]: {
+        "&:nth-child(4)": {
+          fontSize: "16px",
+        },
+        "&:nth-child(1)": {
+          fontSize: "14px",
+        },
+        "&:nth-child(2)": {
+          fontSize: "37px",
+        },
+        "&:nth-child(3)": {
+          fontSize: "37px",
+        },
+      },
+      [theme.breakpoints.up("desktop")]: {
+        "&:nth-child(1)": {
+          fontSize: "16px",
+        },
+        "&:nth-child(2)": {
+          fontSize: "67px",
+        },
+        "&:nth-child(3)": {
+          fontSize: "67px",
+        },
+        "&:nth-child(4)": {
+          fontSize: "20px",
+        },
+      },
+      [theme.breakpoints.up("tv")]: {
+        "&:nth-child(2)": {
+          fontSize: "77px",
+        },
+        "&:nth-child(3)": {
+          fontSize: "77px",
+        },
+      },
       "&:nth-child(1)": {
-        fontSize: "16px",
+        // fontSize: "16px",
         margin: "0 0 12px 4px",
         color: `${DefaultThemes.colors.blueBolt}`,
         letterSpacing: ".1em",
@@ -26,7 +90,7 @@ const useStyles = makeStyles(() => ({
         animationName: "$contentAnimation",
       },
       "&:nth-child(2)": {
-        fontSize: "77px",
+        // fontSize: "77px",
         color: "#ccd6f6",
         lineHeight: "1.5",
         fontWeight: "bolder",
@@ -35,7 +99,7 @@ const useStyles = makeStyles(() => ({
         animationName: "$contentAnimation",
       },
       "&:nth-child(3)": {
-        fontSize: "77px",
+        // fontSize: "77px",
         fontWeight: "bolder",
         color: "#8892b0",
         // animation
@@ -43,7 +107,7 @@ const useStyles = makeStyles(() => ({
         animationName: "$contentAnimation",
       },
       "&:nth-child(4)": {
-        fontSize: "20px",
+        // fontSize: "20px",
         maxWidth: "700px",
         lineHeight: "1.3",
         marginTop: "20px",
@@ -56,6 +120,20 @@ const useStyles = makeStyles(() => ({
     },
   },
   bookButton: {
+    [theme.breakpoints.down("laptop")]: {
+      "&": {
+        "& a": {
+          fontSize: "12px",
+        },
+      },
+    },
+    [theme.breakpoints.down("tablet")]: {
+      "&": {
+        "& a": {
+          fontSize: "10px",
+        },
+      },
+    },
     // animation
     animationDuration: "100ms",
     animationTimingFunction: "ease-in",
@@ -78,7 +156,7 @@ const Header = () => {
   const classes = useStyles();
   return (
     <>
-      <Box className={classes.contentContainer}>
+      <Box id="header" className={classes.contentContainer}>
         <p>Hola, my name is</p>
         <p>Levani Makhareishvili</p>
         <p>I build things for the web.</p>
@@ -87,18 +165,19 @@ const Header = () => {
           designing) exceptional digital experiences. Currently, I’m focused on
           building accessible, human-centered products at Upstatement.
         </p>
-        <Button
-          href="mailto:levanimakharei7li@gmail.com"
-          className={classes.bookButton}
-          sx={{
-            marginTop: "50px",
-            backgroundColor: "#2c87e9",
-            borderRadius: "20px",
-          }}
-          variant="contained"
-        >
-          Book a meeting
-        </Button>
+        <Box className={classes.bookButton}>
+          <Button
+            href="mailto:levanimakharei7li@gmail.com"
+            sx={{
+              marginTop: "50px",
+              backgroundColor: "#2c87e9",
+              borderRadius: "20px",
+            }}
+            variant="contained"
+          >
+            Book a meeting
+          </Button>
+        </Box>
       </Box>
     </>
   );

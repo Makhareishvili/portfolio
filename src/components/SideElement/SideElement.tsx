@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Theme } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -6,9 +6,12 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
-const useStyle = makeStyles(() => ({
+const useStyle = makeStyles((theme: Theme) => ({
   mainConteiner: {
     color: `#8892b0`,
+    [theme.breakpoints.down("laptop")]: {
+      display: "none",
+    },
   },
   leftContainer: {
     opacity: 0,

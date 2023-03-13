@@ -43,6 +43,7 @@ const useStyle = makeStyles(() => ({
     borderRadius: "50%",
     height: "40px",
     width: "40px",
+    cursor: "pointer",
     "& p": {
       position: "relative",
       color: `${DefaultThemes.colors.blueBolt}`,
@@ -266,11 +267,11 @@ const Navbar = () => {
             : classes.inActiveMainContainer
         } ${prevScrollPos == 0 && classes.shadowContainer}`}
       >
-        <Box className={classes.logoContainer}>
-          <p>
-            <a>M</a>
-          </p>
-        </Box>
+        <Link to="header" smooth>
+          <Box className={classes.logoContainer}>
+            <p> M </p>
+          </Box>
+        </Link>
         {!breakPointTablet ? (
           <>
             <Box
