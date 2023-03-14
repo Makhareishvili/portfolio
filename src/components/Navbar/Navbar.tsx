@@ -235,7 +235,7 @@ const BookButton = ({ classes, isOpen }: any): JSX.Element => {
 const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [scrollUp, setScrollUp] = useState<boolean | null>(null);
-  const [isOpen, setIsOpen] = useState<boolean | null>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const navbarRef = useRef(null);
   useEffect(() => {
     function handleScroll() {
