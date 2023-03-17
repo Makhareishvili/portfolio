@@ -25,7 +25,7 @@ const InnerContentContainer = styled("div")(({ theme }) => ({
   width: "100%",
   height: "100%",
   "& p": {
-    color: `${DefaultThemes.colors.gainsBoro}`,
+    color: `${DefaultThemes.colors.coolGrey}`,
     lineHeight: "1.3em",
     marginBottom: "10px",
     fontSize: "15px",
@@ -39,7 +39,7 @@ const InnerContentContainer = styled("div")(({ theme }) => ({
       width: "40%",
       marginBottom: "10px",
       padding: "5px",
-      color: `${DefaultThemes.colors.gainsBoro}`,
+      color: `${DefaultThemes.colors.coolGrey}`,
       "&:before": {
         content: `"➤"`,
         padding: "5px",
@@ -52,11 +52,11 @@ const InnerContentContainer = styled("div")(({ theme }) => ({
   },
   [theme.breakpoints.down("desktop")]: {
     "& p": {
-      fontSize: "14px",
+      fontSize: "12px",
     },
     "& ul": {
       "& li": {
-        fontSize: "14px",
+        fontSize: "12px",
         "&:before": {
           padding: "5px",
         },
@@ -72,6 +72,9 @@ const InnerPhotoContainer = styled("div")(({ theme }) => ({
   maxWidth: "300px",
   [theme.breakpoints.down("laptop")]: {
     margin: "50px auto 0px",
+  },
+  [theme.breakpoints.down("tablet")]: {
+    maxWidth: "200px",
   },
 }));
 const ResponsivePhotoContainer = styled("div")({

@@ -61,6 +61,11 @@ const MainInputContainer = styled("div")(({ theme }) => ({
       lineHeight: "1.6em",
     },
   },
+  [theme.breakpoints.down("tablet")]: {
+    "& h4": {
+      marginTop: "10px",
+    },
+  },
 }));
 const NameEmailInputContainer = styled("div")({
   marginTop: "30px",
@@ -72,34 +77,30 @@ const NameEmailInputContainer = styled("div")({
 const TextFieldInput = styled(TextField)(({ theme }) => ({
   width: "40%",
   "& label": {
-    fontSize: "1.2em",
+    fontSize: "1.6em",
     color: `#ccd6f6`,
     [theme.breakpoints.down("laptop")]: {
       fontSize: "1em",
     },
     [theme.breakpoints.down("tablet")]: {
-      fontSize: ".6em",
+      fontSize: ".8em",
     },
   },
   "& .MuiInputBase-input": {
     color: "#8892b0", // change the text color here
-    fontSize: "1.4em",
+    fontSize: "1.6em",
     height: "30px",
     [theme.breakpoints.down("laptop")]: {
       fontSize: "1em",
     },
     [theme.breakpoints.down("tablet")]: {
-      fontSize: ".6em",
+      fontSize: ".8em",
     },
   },
   "& label.Mui-focused": {
     color: `${DefaultThemes.colors.blueBolt}`,
-    fontSize: "1.2em",
     [theme.breakpoints.down("laptop")]: {
       fontSize: "1em",
-    },
-    [theme.breakpoints.down("tablet")]: {
-      fontSize: ".6em",
     },
   },
   "& .MuiInput-underline:before": {

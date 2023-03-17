@@ -65,15 +65,16 @@ const ContentContainer = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("mobile")]: {
     "& > p:nth-of-type(4)": {
       fontSize: "12px",
+      marginTop: "12px",
     },
     "& > p:nth-of-type(1)": {
-      fontSize: "10px",
+      fontSize: "12px",
     },
     "& > p:nth-of-type(2)": {
-      fontSize: "20px",
+      fontSize: "22px",
     },
     "& > p:nth-of-type(3)": {
-      fontSize: "20px",
+      fontSize: "22px",
     },
   },
   [theme.breakpoints.up("tablet")]: {
@@ -144,6 +145,7 @@ const BookButton = styled("div")(({ theme }) => ({
     "&": {
       "& a": {
         fontSize: "10px",
+        marginTop: "24px",
       },
     },
   },

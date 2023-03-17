@@ -9,6 +9,7 @@ declare module '@mui/material/styles' {
       dimGray: string,
       gainsBoro: string
       blueBolt: string,
+      coolGrey: string,
       backgroundInRGB: {
         r: string;
         g: string;
@@ -34,6 +35,7 @@ declare module '@mui/material/styles' {
       dimGray: string,
       gainsBoro: string
       blueBolt: string,
+      coolGrey: string,
       backgroundInRGB: {
         r: string;
         g: string;

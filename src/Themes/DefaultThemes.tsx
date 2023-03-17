@@ -7,6 +7,7 @@ export const DefaultThemes = createTheme({
     dimGray: "#e4e6eb",
     gainsBoro: "#b0b3b8",
     blueBolt: "#00BCF3",
+    coolGrey: "#8892b0",
     backgroundInRGB: {
       r: "24",
       g: "25",

@@ -22,6 +22,9 @@ const ContentContainer = styled("div")<ContentContainerProps>`
   width: 100%;
   margin-bottom: 100px;
   justify-content: ${({ index }) => index === 1 && "flex-end"};
+  ${({ theme }) => theme.breakpoints.down("tablet")} {
+    margin-bottom: 30px;
+  }
 `;
 const ProjectImgContainer = styled("div")(({ theme }) => ({
   // flex: 1,

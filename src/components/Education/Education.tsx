@@ -18,6 +18,9 @@ const MainContainer = styled(motion.div)(({ theme }) => ({
     [theme.breakpoints.down("desktop")]: {
       fontSize: "18px",
     },
+    [theme.breakpoints.down("tablet")]: {
+      // paddingTop: "60px",
+    },
   },
 }));
 const ContentContainer = styled("div")(({ theme }) => ({
@@ -28,6 +31,9 @@ const ContentContainer = styled("div")(({ theme }) => ({
     letterSpacing: "0.05em",
     [theme.breakpoints.down("desktop")]: {
       fontSize: "13px",
+    },
+    [theme.breakpoints.down("tablet")]: {
+      fontSize: "12px",
     },
   },
   "& h3": {
