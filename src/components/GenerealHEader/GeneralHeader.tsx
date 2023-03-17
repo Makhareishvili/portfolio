@@ -12,6 +12,17 @@ const HeadingContainer = styled("div")(({ theme }) => ({
   "& p": {
     fontSize: "28px",
     color: `${DefaultThemes.colors.blueBolt}`,
+    [theme.breakpoints.down("desktop")]: {
+      fontSize: "24px",
+    },
+    [theme.breakpoints.down("laptop")]: {
+      fontSize: "22px",
+      minWidth: "160px",
+    },
+    [theme.breakpoints.down("tablet")]: {
+      fontSize: "22px",
+      minWidth: "150px",
+    },
   },
   "& div": {
     marginLeft: "2rem",

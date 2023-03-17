@@ -36,13 +36,32 @@ const MainContainer = styled("div")({
     fontSize: "1.2em",
   },
 });
-const MainInputContainer = styled("div")({
+const MainInputContainer = styled("div")(({ theme }) => ({
   maxWidth: "800px",
   margin: "0 auto",
   padding: "80px",
   borderRadius: "20px",
   boxShadow: "rgba(49, 88, 179, 0.2) 0px 7px 29px 0px",
-});
+  [theme.breakpoints.down("laptop")]: {
+    padding: "40px",
+    h2: {
+      fontSize: "20px",
+    },
+    h4: {
+      fontSize: "16px",
+    },
+  },
+  [theme.breakpoints.down("laptop")]: {
+    padding: "20px",
+    h2: {
+      fontSize: "18px",
+    },
+    h4: {
+      fontSize: "10px",
+      lineHeight: "1.6em",
+    },
+  },
+}));
 const NameEmailInputContainer = styled("div")({
   marginTop: "30px",
   marginBottom: "40px",
@@ -50,20 +69,38 @@ const NameEmailInputContainer = styled("div")({
   flexWrap: "wrap",
   justifyContent: "space-between",
 });
-const TextFieldInput = styled(TextField)({
+const TextFieldInput = styled(TextField)(({ theme }) => ({
   width: "40%",
   "& label": {
     fontSize: "1.2em",
     color: `#ccd6f6`,
+    [theme.breakpoints.down("laptop")]: {
+      fontSize: "1em",
+    },
+    [theme.breakpoints.down("tablet")]: {
+      fontSize: ".6em",
+    },
   },
   "& .MuiInputBase-input": {
     color: "#8892b0", // change the text color here
     fontSize: "1.4em",
     height: "30px",
+    [theme.breakpoints.down("laptop")]: {
+      fontSize: "1em",
+    },
+    [theme.breakpoints.down("tablet")]: {
+      fontSize: ".6em",
+    },
   },
   "& label.Mui-focused": {
     color: `${DefaultThemes.colors.blueBolt}`,
     fontSize: "1.2em",
+    [theme.breakpoints.down("laptop")]: {
+      fontSize: "1em",
+    },
+    [theme.breakpoints.down("tablet")]: {
+      fontSize: ".6em",
+    },
   },
   "& .MuiInput-underline:before": {
     borderBottomColor: "#8892b0",
@@ -85,13 +122,22 @@ const TextFieldInput = styled(TextField)({
       borderColor: "red",
     },
   },
-});
-const BtnContainer = styled("div")({
+}));
+const BtnContainer = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "flex-end",
   marginTop: "2rem",
-});
-const ContactContainer = styled("div")({
+  [theme.breakpoints.down("tablet")]: {
+    "& button": {
+      width: "30%",
+      fontSize: "10px",
+    },
+    "& svg": {
+      height: "16px",
+    },
+  },
+}));
+const ContactContainer = styled("div")(({ theme }) => ({
   color: "#8892b0",
   display: "flex",
   flexDirection: "column",
@@ -105,12 +151,27 @@ const ContactContainer = styled("div")({
     "& p": {
       marginLeft: "10px",
       letterSpacing: ".1em",
+      [theme.breakpoints.down("laptop")]: {
+        fontSize: ".8em",
+      },
+      [theme.breakpoints.down("tablet")]: {
+        fontSize: ".6em",
+      },
     },
     "& svg": {
       color: `${DefaultThemes.colors.blueBolt}`,
+      [theme.breakpoints.down("laptop")]: {
+        fontSize: "1em",
+      },
+      [theme.breakpoints.down("tablet")]: {
+        fontSize: ".8em",
+      },
     },
   },
-});
+  [theme.breakpoints.down("tablet")]: {
+    marginTop: "30px",
+  },
+}));
 const DisplayMessageContainer = styled("div")({
   display: "flex",
   flexDirection: "column",

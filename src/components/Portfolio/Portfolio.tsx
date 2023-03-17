@@ -14,7 +14,6 @@ interface ContentContainerProps {
 const MainContainer = styled(motion.div)({
   maxWidth: "1000px",
   margin: "0px auto",
-  padding: "100px 0",
   height: "100%",
 });
 const ContentContainer = styled("div")<ContentContainerProps>`
@@ -73,6 +72,47 @@ const ProjectContentContainer = styled("div")<ContentContainerProps>(
         textAlign: "left",
       },
     },
+    [theme.breakpoints.down("laptop")]: {
+      "& p:first-of-type": {
+        fontSize: "18px",
+      },
+      "& p:nth-of-type(2)": {
+        fontSize: "16px",
+      },
+      "& div:first-of-type": {
+        "& p": {
+          color: "#8892b0",
+          fontSize: "14px",
+        },
+      },
+      "& div:nth-of-type(2)": {
+        "& p": {
+          fontSize: "12px",
+        },
+      },
+    },
+    [theme.breakpoints.down("tablet")]: {
+      padding: "0 10px",
+      "& p:first-of-type": {
+        fontSize: "14px",
+      },
+      "& p:nth-of-type(2)": {
+        fontSize: "12px",
+      },
+      "& div:first-of-type": {
+        "& p": {
+          color: "#8892b0",
+          fontSize: "10px",
+        },
+      },
+      "& div:nth-of-type(2)": {
+        "& p": {
+          fontSize: "8px",
+          margin: "4px",
+          marginLeft: 0,
+        },
+      },
+    },
   })
 );
 const DescriptionContainer = styled("div")(({ theme }) => ({
@@ -92,7 +132,6 @@ const TechList = styled("div")<ContentContainerProps>(({ theme, index }) => ({
     color: DefaultThemes.colors.blueBolt,
   },
   "& p:last-of-type": {
-    marginTop: 0,
     marginLeft: `${index == 1 && 0}`,
   },
   [theme.breakpoints.down("desktop")]: {

@@ -126,6 +126,11 @@ const ContentContainer = styled("div")(({ theme }) => ({
       fontSize: "77px",
     },
   },
+  [theme.breakpoints.down("tablet")]: {
+    "& > p:nth-of-type(4)": {
+      maxWidth: "300px",
+    },
+  },
 }));
 const BookButton = styled("div")(({ theme }) => ({
   [theme.breakpoints.down("laptop")]: {

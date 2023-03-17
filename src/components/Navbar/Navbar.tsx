@@ -92,6 +92,10 @@ const DefaultmainContainer = styled("div")<DefaultmainContainerProps>`
   background: ${({ isOpen }) => isOpen && "none"};
   transition: ${({ prevScrollPos }) =>
     prevScrollPos == 0 && "box-shadow 1s ease"};
+  ${({ theme }) => theme.breakpoints.down("tablet")} {
+    padding: 15px;
+    /* height: 50px; */
+  }
 `;
 const LogoContainer = styled("div")`
   display: flex;
@@ -101,6 +105,7 @@ const LogoContainer = styled("div")`
   border-radius: 50%;
   height: 40px;
   width: 40px;
+  font-weight: 600;
   cursor: pointer;
   & p {
     position: relative;
@@ -113,6 +118,20 @@ const LogoContainer = styled("div")`
   transform: scale(0);
   animation-delay: 400ms;
   animation-name: ${listLoad};
+  ${({ theme }) => theme.breakpoints.up("tablet")} {
+    width: 50px;
+    height: 50px;
+    & p {
+      font-size: 20px;
+    }
+  }
+  ${({ theme }) => theme.breakpoints.down("tablet")} {
+    width: 32px;
+    height: 32px;
+    & p {
+      font-size: 15px;
+    }
+  }
 `;
 const ListContainer = styled("div")`
   display: flex;
@@ -158,6 +177,9 @@ const ListContainer = styled("div")`
     &:hover {
       color: ${DefaultThemes.colors.blueBolt};
       transition: 0.5s ease;
+    }
+    &.active {
+      color: ${DefaultThemes.colors.blueBolt};
     }
   }
 `;
@@ -256,22 +278,50 @@ const NavbarList = (): JSX.Element => {
   return (
     <ul>
       <li>
-        <Link smooth={true} to="about" duration={1000} offset={0}>
+        <Link
+          activeClass="active"
+          spy={true}
+          smooth={true}
+          to="about"
+          duration={1000}
+          offset={-150}
+        >
           About
         </Link>
       </li>
       <li>
-        <Link smooth={true} to="portfolio" duration={1000} offset={0}>
+        <Link
+          activeClass="active"
+          smooth={true}
+          to="portfolio"
+          duration={1000}
+          offset={-150}
+          spy={true}
+        >
           Portfolio
         </Link>
       </li>
       <li>
-        <Link smooth={true} to="education" duration={1000} offset={0}>
+        <Link
+          activeClass="active"
+          spy={true}
+          smooth={true}
+          to="education"
+          duration={1000}
+          offset={-150}
+        >
           Education
         </Link>
       </li>
       <li>
-        <Link smooth={true} to="contact" duration={1000} offset={200}>
+        <Link
+          activeClass="active"
+          spy={true}
+          smooth={true}
+          to="contact"
+          duration={1000}
+          offset={100}
+        >
           Contact
         </Link>
       </li>
@@ -280,12 +330,7 @@ const NavbarList = (): JSX.Element => {
 };
 const BookButton = ({ isOpen }: any): JSX.Element => {
   return (
-    <BookButtonAnchor
-      // style={{ display: isOpen ? "flex" : "none" }}
-      //++
-      isOpen={isOpen}
-      href="mailto:levanimakharei7li@gmail.com"
-    >
+    <BookButtonAnchor isOpen={isOpen} href="mailto:levanimakharei7li@gmail.com">
       <Button
         sx={{ backgroundColor: "#2c87e9", borderRadius: "20px" }}
         variant="contained"
@@ -320,7 +365,6 @@ const Navbar = () => {
     // Update the CSS 'overflow' property of the 'body' element
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
-  const handleToggle = () => {};
   const theme = useTheme();
   const breakPointTablet = useMediaQuery(theme.breakpoints.down("laptop"));
   return (

@@ -4,11 +4,14 @@ import photo from "../../assets/photos/mads.png";
 import GeneralHeader from "../GenerealHEader/GeneralHeader";
 import { motion } from "framer-motion";
 import { styled } from "@mui/system";
-const MainContainer = styled(motion.div)({
-  padding: "100px 0",
+const MainContainer = styled(motion.div)(({ theme }) => ({
+  paddingBottom: "100px",
   margin: "0px auto",
   maxWidth: "900px",
-});
+  [theme.breakpoints.down("desktop")]: {
+    maxWidth: "600px",
+  },
+}));
 const ContentContainer = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "3fr 2fr",
@@ -17,7 +20,7 @@ const ContentContainer = styled("div")(({ theme }) => ({
     display: "block",
   },
 }));
-const InnerContentContainer = styled("div")({
+const InnerContentContainer = styled("div")(({ theme }) => ({
   flex: "2",
   width: "100%",
   height: "100%",
@@ -47,7 +50,23 @@ const InnerContentContainer = styled("div")({
       },
     },
   },
-});
+  [theme.breakpoints.down("desktop")]: {
+    "& p": {
+      fontSize: "14px",
+    },
+    "& ul": {
+      "& li": {
+        fontSize: "14px",
+        "&:before": {
+          padding: "5px",
+        },
+        "&:last-of-type": {
+          width: "60%",
+        },
+      },
+    },
+  },
+}));
 const InnerPhotoContainer = styled("div")(({ theme }) => ({
   flex: 1,
   maxWidth: "300px",
