@@ -44,29 +44,12 @@ const Fragment = styled("span")({
   margin: "5px",
 });
 const Responsive = styled("div")(({ theme }) => ({
-  [theme.breakpoints.up("mobile")]: {
-    h2: {
-      fontSize: "18px",
-    },
-  },
-  [theme.breakpoints.up("tablet")]: {
+  [theme.breakpoints.down("tablet")]: {
     h2: {
       fontSize: "28px",
     },
-  },
-  [theme.breakpoints.up("laptop")]: {
-    h2: {
-      fontSize: "38px",
-    },
-  },
-  [theme.breakpoints.up("desktop")]: {
-    h2: {
-      fontSize: "48px",
-    },
-  },
-  [theme.breakpoints.up("tv")]: {
-    h2: {
-      fontSize: "58px",
+    span: {
+      fontSize: "30px",
     },
   },
 }));
