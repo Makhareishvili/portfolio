@@ -1,5 +1,5 @@
-import { Box, styled } from "@mui/material";
-import makeStyles from "@mui/styles/makeStyles";
+import { Box } from "@mui/material";
+import { styled } from "@mui/system";
 import { useEffect, useState } from "react";
 import { DefaultThemes } from "../Themes/DefaultThemes";
 import {
@@ -12,33 +12,23 @@ import {
   SideElementContainer,
   WelcomeScreenContainer,
 } from "./Containers";
-const useStyles = makeStyles(() => ({
-  mainContainer: {
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-    backgroundColor: `${DefaultThemes.colors.background}`,
-  },
 
-  "@media (min-width: 0px)": {
-    mainContainer: {
-      padding: "0 25px",
-    },
+const MainContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  backgroundColor: DefaultThemes.colors.background,
+  [theme.breakpoints.up("mobile")]: {
+    padding: "0 25px",
   },
-  "@media (min-width: 481px)": {
-    mainContainer: {
-      padding: "0 50px",
-    },
+  [theme.breakpoints.up("tablet")]: {
+    padding: "0 50px",
   },
-  "@media (min-width: 769px)": {
-    mainContainer: {
-      padding: "0 100px",
-    },
+  [theme.breakpoints.up("laptop")]: {
+    padding: "0 100px",
   },
-  "@media (min-width: 1200px)": {
-    mainContainer: {
-      padding: "0 150px",
-    },
+  [theme.breakpoints.up(1200)]: {
+    padding: "0 150px",
   },
 }));
 const Responsive = styled("div")(({ theme }) => ({
@@ -47,24 +37,8 @@ const Responsive = styled("div")(({ theme }) => ({
       padding: "0 25px",
     },
   },
-  // [theme.breakpoints.up("tablet")]: {
-  //   div: {
-  //     padding: "0 50px",
-  //   },
-  // },
-  // [theme.breakpoints.up("laptop")]: {
-  //   div: {
-  //     padding: "0 100px",
-  //   },
-  // },
-  // [theme.breakpoints.up("tv")]: {
-  //   div: {
-  //     padding: "0 150px",
-  //   },
-  // },
 }));
 const ApplicationContainer = () => {
-  const classes = useStyles();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -82,13 +56,13 @@ const ApplicationContainer = () => {
           <NavbarContainer />
           <SideElementContainer />
           <Responsive>
-            <Box className={classes.mainContainer}>
+            <MainContainer>
               <HeaderContainer />
               <AboutContainer />
               <PortfolioContainer />
               <EducationContainer />
               <ContactContainer />
-            </Box>
+            </MainContainer>
           </Responsive>
         </>
       )}

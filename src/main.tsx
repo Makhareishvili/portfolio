@@ -1,6 +1,7 @@
-import { ThemeProvider } from "@mui/styles";
+import { ThemeProvider } from "@mui/system";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { About } from "./components/Components";
 import ApplicationContainer from "./containers/ApplicationContainer";
 import "./index.css";
 import { DefaultThemes } from "./Themes/DefaultThemes";

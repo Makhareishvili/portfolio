@@ -1,51 +1,49 @@
 import { Box } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import makeStyles from "@mui/styles/makeStyles";
 import { EducationData } from "../../constants/EducationData/EducationData";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
 import GeneralHeader from "../GenerealHEader/GeneralHeader";
 import { motion } from "framer-motion";
-const useStyle = makeStyles((theme: Theme) => ({
-  mainContainer: {
-    // color: "#ccd6f6",
-    // color: "#8892b0",
+import { styled } from "@mui/system";
 
-    maxWidth: "1000px",
-    margin: "0px auto",
-    padding: "100px 0",
-    height: "100%",
-    "& h2": {
-      color: "#ccd6f6",
-      textAlign: "center",
-    },
-  },
-  contentContainer: {
-    "& p": {
-      color: "#8892b0",
-      marginTop: "20px",
-      lineHeight: "1.3em",
-      letterSpacing: "0.05em",
-    },
-    "& div": {
-      padding: "20px 0",
-      color: "#ccd6f6",
-      "& ul": {
-        listStyleType: "none",
-        display: "flex",
-        flexWrap: "wrap",
-        padding: "10px 20px",
-        "& li": {
-          width: "calc(100%/3)",
-          lineHeight: "1.5em",
-          color: `${DefaultThemes.colors.blueBolt}`,
-        },
-      },
-    },
-    "& span": {
-      color: `${DefaultThemes.colors.blueBolt}`,
-    },
-  },
-}));
+const MainContainer = styled(motion.div)`
+  // color: "#ccd6f6",
+  // color: "#8892b0",
+
+  max-width: 1000px;
+  margin: 0px auto;
+  padding: 100px 0;
+  height: 100%;
+  & h2 {
+    color: #ccd6f6;
+    text-align: center;
+  }
+`;
+const ContentContainer = styled("div")`
+  & p {
+    color: #8892b0;
+    margin-top: 20px;
+    line-height: 1.3em;
+    letter-spacing: 0.05em;
+  }
+  & div {
+    padding: 20px 0;
+    color: #ccd6f6;
+    & ul {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px 20px;
+      & li {
+        width: calc(100% / 3);
+        line-height: 1.5em;
+        color: ${DefaultThemes.colors.blueBolt};
+      }
+    }
+  }
+  & span {
+    color: ${DefaultThemes.colors.blueBolt};
+  }
+`;
 const divAnimate = {
   offscreen: { opacity: 0, y: 100 },
   onscreen: {
@@ -58,19 +56,17 @@ const divAnimate = {
   },
 };
 const Education = () => {
-  const classes = useStyle();
   return (
-    <motion.div
+    <MainContainer
       initial={"offscreen"}
       whileInView={"onscreen"}
       viewport={{ once: true, amount: 0.1 }}
       variants={divAnimate}
-      className={classes.mainContainer}
       id="education"
     >
       <GeneralHeader heading={"Education"} />
       <h2>Passion for the Tech Industry and technical skills</h2>
-      <Box className={classes.contentContainer}>
+      <ContentContainer>
         <p>
           I've always been fascinated by the world of technology, even before I
           started studying computer science at Tbilisi State University. When I
@@ -122,8 +118,8 @@ const Education = () => {
             ➠ <span>Git</span>
           </p>
         </Box>
-      </Box>
-    </motion.div>
+      </ContentContainer>
+    </MainContainer>
   );
 };
 export default Education;

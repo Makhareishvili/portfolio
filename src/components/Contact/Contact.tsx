@@ -1,6 +1,5 @@
 import emailjs from "@emailjs/browser";
 import { Box, Button, TextField, Theme } from "@mui/material";
-import makeStyles from "@mui/styles/makeStyles";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
 import GeneralHeader from "../GenerealHEader/GeneralHeader";
 import LocalPhoneSharpIcon from "@mui/icons-material/LocalPhoneSharp";
@@ -8,172 +7,168 @@ import SendSharpIcon from "@mui/icons-material/SendSharp";
 import LocationCitySharpIcon from "@mui/icons-material/LocationCitySharp";
 import { useRef, useState } from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { keyframes, styled } from "@mui/system";
+const displayLoad = keyframes({
+  "0%": {
+    transform: "translateY(-110%)",
+  },
+  "100%": {
+    transform: "translateY(0)",
+  },
+});
+const MainContainer = styled("div")({
+  // color: "#ccd6f6",
+  // color: "#8892b0",
 
-const useStyle = makeStyles((theme: Theme) => ({
-  mainContainer: {
-    // color: "#ccd6f6",
-    // color: "#8892b0",
-
-    maxWidth: "1000px",
-    margin: "0px auto",
-    padding: "100px 0 50px 0",
-    height: "100%",
-    "& h2": {
-      color: "#ccd6f6",
-      textAlign: "center",
-      fontSize: "2em",
-    },
-    "& h4": {
-      textAlign: "center",
-      color: "#8892b0",
-      lineHeight: "3em",
-      fontSize: "1.2em",
-    },
+  maxWidth: "1000px",
+  margin: "0px auto",
+  padding: "100px 0 50px 0",
+  height: "100%",
+  "& h2": {
+    color: "#ccd6f6",
+    textAlign: "center",
+    fontSize: "2em",
   },
-  mainInputContainer: {
-    maxWidth: "800px",
-    margin: "0 auto",
-    padding: "80px",
-    borderRadius: "20px",
-    boxShadow: "rgba(49, 88, 179, 0.2) 0px 7px 29px 0px",
-  },
-  nameEmailInputContainer: {
-    marginTop: "30px",
-    marginBottom: "40px",
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-  },
-  textField: {
-    width: "40%",
-    "& label": {
-      fontSize: "1.2em",
-      color: `#ccd6f6`,
-    },
-    "& .MuiInputBase-input": {
-      color: "#8892b0", // change the text color here
-      fontSize: "1.4em",
-      height: "30px",
-    },
-    "& label.Mui-focused": {
-      color: `${DefaultThemes.colors.blueBolt}`,
-      fontSize: "1.2em",
-    },
-    "& .MuiInput-underline:before": {
-      borderBottomColor: "#8892b0",
-    },
-    "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
-      borderBottomColor: `${DefaultThemes.colors.blueBolt}`,
-    },
-    "& .MuiInput-underline:after": {
-      borderBottomColor: `${DefaultThemes.colors.blueBolt}`,
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "red",
-      },
-      "&:hover fieldset": {
-        borderColor: "yellow",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "red",
-      },
-    },
-  },
-  btnContainer: {
-    display: "flex",
-    justifyContent: "flex-end",
-    marginTop: "2rem",
-  },
-  contactContainer: {
+  "& h4": {
+    textAlign: "center",
     color: "#8892b0",
-    display: "flex",
-    flexDirection: "column",
-    // justifyContent: "space-between",
-    marginTop: "5rem",
-    "& div": {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      margin: "10px 0",
-      "& p": {
-        marginLeft: "10px",
-        letterSpacing: ".1em",
-      },
-      "& svg": {
-        color: `${DefaultThemes.colors.blueBolt}`,
-      },
+    lineHeight: "3em",
+    fontSize: "1.2em",
+  },
+});
+const MainInputContainer = styled("div")({
+  maxWidth: "800px",
+  margin: "0 auto",
+  padding: "80px",
+  borderRadius: "20px",
+  boxShadow: "rgba(49, 88, 179, 0.2) 0px 7px 29px 0px",
+});
+const NameEmailInputContainer = styled("div")({
+  marginTop: "30px",
+  marginBottom: "40px",
+  display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "space-between",
+});
+const TextFieldInput = styled(TextField)({
+  width: "40%",
+  "& label": {
+    fontSize: "1.2em",
+    color: `#ccd6f6`,
+  },
+  "& .MuiInputBase-input": {
+    color: "#8892b0", // change the text color here
+    fontSize: "1.4em",
+    height: "30px",
+  },
+  "& label.Mui-focused": {
+    color: `${DefaultThemes.colors.blueBolt}`,
+    fontSize: "1.2em",
+  },
+  "& .MuiInput-underline:before": {
+    borderBottomColor: "#8892b0",
+  },
+  "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+    borderBottomColor: `${DefaultThemes.colors.blueBolt}`,
+  },
+  "& .MuiInput-underline:after": {
+    borderBottomColor: `${DefaultThemes.colors.blueBolt}`,
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "red",
+    },
+    "&:hover fieldset": {
+      borderColor: "yellow",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "red",
     },
   },
-  displayMessageContainer: {
+});
+const BtnContainer = styled("div")({
+  display: "flex",
+  justifyContent: "flex-end",
+  marginTop: "2rem",
+});
+const ContactContainer = styled("div")({
+  color: "#8892b0",
+  display: "flex",
+  flexDirection: "column",
+  // justifyContent: "space-between",
+  marginTop: "5rem",
+  "& div": {
     display: "flex",
-    flexDirection: "column",
+    justifyContent: "center",
     alignItems: "center",
-    color: `#8892b0`,
-    background: "#1e1f22",
-    width: "20%",
-    height: "200px",
-    position: "fixed",
-    borderRadius: "10px",
-    top: 10,
-    left: "40%",
-    zIndex: 4,
-    // animation
-    animationDuration: "300ms",
-    animationTimingFunction: "ease-in",
-    animationFillMode: "forwards",
-    transform: "scale(0)",
-    // animationDelay: "100ms",
-    animationName: "$displayLoad",
+    margin: "10px 0",
+    "& p": {
+      marginLeft: "10px",
+      letterSpacing: ".1em",
+    },
     "& svg": {
-      color: "green",
-      fontSize: "3em",
-      marginTop: "20px",
-    },
-    "& h2": { lineHeight: "2em" },
-  },
-  "@keyframes displayLoad": {
-    "0%": {
-      transform: "translateY(-110%)",
-    },
-    "100%": {
-      transform: "translateY(0)",
+      color: `${DefaultThemes.colors.blueBolt}`,
     },
   },
-}));
+});
+const DisplayMessageContainer = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  color: `#8892b0`,
+  background: "#1e1f22",
+  width: "20%",
+  height: "200px",
+  position: "fixed",
+  borderRadius: "10px",
+  top: 10,
+  left: "40%",
+  zIndex: 4,
+  // animation
+  animationDuration: "300ms",
+  animationTimingFunction: "ease-in",
+  animationFillMode: "forwards",
+  transform: "scale(0)",
+  // animationDelay: "100ms",
+  animationName: `${displayLoad}`,
+  "& svg": {
+    color: "green",
+    fontSize: "3em",
+    marginTop: "20px",
+  },
+  "& h2": { lineHeight: "2em" },
+});
 const Contact = () => {
   const [disable, setDisable] = useState(false);
   const [displayVisible, setDisplayVisible] = useState(false);
-  const classes = useStyle();
   const form = useRef<any>();
   const sendEmail = (e: any) => {
-    // setDisable(true);
+    setDisable(true);
     e.preventDefault();
-    // emailjs
-    //   .sendForm(
-    //     "service_ki54oti",
-    //     "template_x5manfo",
-    //     form.current,
-    //     "NcQ8ACTHeTBRKO5wg"
-    //   )
-    //   .then(
-    //     (result) => {
-    //       console.log(result.text);
-    //       setDisable(false);
-    //     },
-    //     (error) => {
-    //       console.log(error.text);
-    //     }
-    //   );
-    handleDisplayVisible();
+    emailjs
+      .sendForm(
+        "service_ki54oti",
+        "template_x5manfo",
+        form.current,
+        "NcQ8ACTHeTBRKO5wg"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setDisable(false);
+          handleDisplayVisible();
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
   const GetFields = () => {
     return (
       <>
         <form ref={form} onSubmit={sendEmail}>
-          <Box className={classes.nameEmailInputContainer}>
-            <TextField
-              className={classes.textField}
+          <NameEmailInputContainer>
+            <TextFieldInput
               size="medium"
               label="Your Name"
               variant="standard"
@@ -181,26 +176,24 @@ const Contact = () => {
               name="user_name"
               required
             />
-            <TextField
-              className={classes.textField}
+            <TextFieldInput
               label="Email Address"
               variant="standard"
               type="email"
               name="user_email"
               required
             />
-          </Box>
-          <TextField
-            fullWidth
+          </NameEmailInputContainer>
+          <TextFieldInput
             multiline
             rows={5} // set the number of rows here
-            className={classes.textField}
             label="Your Message"
             variant="standard"
             name="message"
             required
+            sx={{ width: "100%" }}
           />
-          <Box className={classes.btnContainer}>
+          <BtnContainer>
             <Button
               size="large"
               variant="outlined"
@@ -211,7 +204,7 @@ const Contact = () => {
             >
               shoot
             </Button>
-          </Box>
+          </BtnContainer>
         </form>
       </>
     );
@@ -224,15 +217,15 @@ const Contact = () => {
   };
   return (
     <>
-      <Box id="contact" className={classes.mainContainer}>
+      <MainContainer id="contact">
         <GeneralHeader heading={"Contact"} />
-        <Box className={classes.mainInputContainer}>
+        <MainInputContainer>
           <h2>Send me a message!</h2>
           <h4>
             Got a question or proposal, or just want to say hola? Go ahead.
           </h4>
           <GetFields />
-          <Box className={classes.contactContainer}>
+          <ContactContainer>
             <Box>
               <LocalPhoneSharpIcon />
               <p>+995 574 00 04 03</p>
@@ -245,15 +238,15 @@ const Contact = () => {
               <LocationCitySharpIcon />
               <p>Tbilisi,Georgia</p>
             </Box>
-          </Box>
-        </Box>
-      </Box>
+          </ContactContainer>
+        </MainInputContainer>
+      </MainContainer>
       {displayVisible && (
-        <Box className={classes.displayMessageContainer}>
+        <DisplayMessageContainer>
           <CheckCircleOutlineIcon sx={{ color: "green" }} />
           <h2>Thank you!</h2>
           <p>Message successfully sent.</p>
-        </Box>
+        </DisplayMessageContainer>
       )}
     </>
   );

@@ -1,49 +1,47 @@
-import { Box, styled } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { Box } from "@mui/material";
+import { keyframes, styled } from "@mui/system";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
-const useStyles = makeStyles({
-  loadingText: {
-    position: "relative",
-    fontSize: "48px",
-    color: `${DefaultThemes.colors.background}`,
-    WebkitTextStroke: `0.1vw ${DefaultThemes.colors.nero}`,
-    letterSpacing: ".1em",
-    "&:before": {
-      content: "attr(data-text)",
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "0%",
-      height: "100%",
-      color: `${DefaultThemes.colors.blueBolt}`,
-      WebkitTextStroke: `0vw ${DefaultThemes.colors.nero}`,
-      // borderRight: "2px solid #01fe87",
-      overflow: "hidden",
-      animation: "$animate 3s",
-      animationFillMode: "forwards",
-    },
+const animate = keyframes({
+  from: {
+    width: 0,
   },
-  "@keyframes animate": {
-    from: {
-      width: "0",
-    },
-    to: {
-      width: "100%",
-    },
+  to: {
+    width: "100%",
   },
-  mainContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    minHeight: "100vh",
-    backgroundColor: `${DefaultThemes.colors.background}`,
+});
+const LoadingText = styled("h2")({
+  position: "relative",
+  fontSize: "48px",
+  color: `${DefaultThemes.colors.background}`,
+  WebkitTextStroke: `0.1vw ${DefaultThemes.colors.nero}`,
+  letterSpacing: ".1em",
+  "&:before": {
+    content: "attr(data-text)",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "0%",
+    height: "100%",
+    color: `${DefaultThemes.colors.blueBolt}`,
+    WebkitTextStroke: `0vw ${DefaultThemes.colors.nero}`,
+    // borderRight: "2px solid #01fe87",
+    overflow: "hidden",
+    animation: `${animate} 3s`,
+    animationFillMode: "forwards",
   },
-  fragment: {
-    color: `${DefaultThemes.colors.nero}`,
-    fontSize: "50px",
-    WebkitTextStroke: `1px ${DefaultThemes.colors.nero}`,
-    margin: "5px",
-  },
+});
+const MainContainer = styled("div")({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  minHeight: "100vh",
+  backgroundColor: `${DefaultThemes.colors.background}`,
+});
+const Fragment = styled("span")({
+  color: `${DefaultThemes.colors.nero}`,
+  fontSize: "50px",
+  WebkitTextStroke: `1px ${DefaultThemes.colors.nero}`,
+  margin: "5px",
 });
 const Responsive = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("mobile")]: {
@@ -74,17 +72,14 @@ const Responsive = styled("div")(({ theme }) => ({
 }));
 const WelcomeScreen = () => {
   const text = "Portfolio";
-  const classes = useStyles();
   return (
-    <Box className={classes.mainContainer}>
+    <MainContainer>
       <Responsive sx={{ display: "flex", alignItems: "center" }}>
-        <span className={classes.fragment}>{"<"}</span>
-        <h2 className={classes.loadingText} data-text={text}>
-          {text}
-        </h2>
-        <span className={classes.fragment}>{"/>"}</span>
+        <Fragment>{"<"}</Fragment>
+        <LoadingText data-text={text}>{text}</LoadingText>
+        <Fragment>{"/>"}</Fragment>
       </Responsive>
-    </Box>
+    </MainContainer>
   );
 };
 export default WelcomeScreen;

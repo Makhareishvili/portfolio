@@ -1,131 +1,99 @@
 import { Box, Theme } from "@mui/material";
-import makeStyles from "@mui/styles/makeStyles";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
 import photo from "../../assets/photos/mads.png";
 import GeneralHeader from "../GenerealHEader/GeneralHeader";
 import { motion } from "framer-motion";
-const useStyles = makeStyles((theme: Theme) => ({
-  mainContainer: {
-    padding: "100px 0",
-    margin: "0px auto",
-    maxWidth: "900px",
+import { styled } from "@mui/system";
+const MainContainer = styled(motion.div)({
+  padding: "100px 0",
+  margin: "0px auto",
+  maxWidth: "900px",
+});
+const ContentContainer = styled("div")(({ theme }) => ({
+  display: "grid",
+  gridTemplateColumns: "3fr 2fr",
+  gap: "50px",
+  [theme.breakpoints.down("laptop")]: {
+    display: "block",
   },
-  contentContainer: {
-    //
-    display: "grid",
-    gridTemplateColumns: "3fr 2fr",
-    gap: "50px",
-    //
-    // display: "flex",
-    // justifyContent: "space-between",
-    // flexWrap: "wrap",
-    // color: "white",
-    // width: "100%",
-    // gap: "15px",
-    [theme.breakpoints.down("laptop")]: {
-      display: "block",
-    },
+}));
+const InnerContentContainer = styled("div")({
+  flex: "2",
+  width: "100%",
+  height: "100%",
+  "& p": {
+    color: `${DefaultThemes.colors.gainsBoro}`,
+    lineHeight: "1.3em",
+    marginBottom: "10px",
+    fontSize: "15px",
+    letterSpacing: "0.05em",
   },
-  innerContentContainer: {
-    flex: 2,
-    width: "100%",
-    height: "100%",
-    // backgroundColor: "green",
-    minWidth: "300px",
-    "& p": {
-      color: `${DefaultThemes.colors.gainsBoro}`,
-      lineHeight: "1.3em",
+  "& ul": {
+    listStyleType: "none",
+    display: "flex",
+    flexWrap: "wrap",
+    "& li": {
+      width: "40%",
       marginBottom: "10px",
-      fontSize: "15px",
-      letterSpacing: "0.05em",
-    },
-    "& ul": {
-      listStyleType: "none",
-      display: "flex",
-      flexWrap: "wrap",
-      "& li": {
-        width: "40%",
-        marginBottom: "10px",
+      padding: "5px",
+      color: `${DefaultThemes.colors.gainsBoro}`,
+      "&:before": {
+        content: `"➤"`,
         padding: "5px",
-        color: `${DefaultThemes.colors.gainsBoro}`,
-        "&:before": {
-          content: `"➤"`,
-          padding: "5px",
-          color: `${DefaultThemes.colors.blueBolt}`,
-        },
-        "&:last-child": {
-          width: "60%",
-        },
+        color: `${DefaultThemes.colors.blueBolt}`,
+      },
+      "&:last-of-type": {
+        width: "60%",
       },
     },
   },
-  innerPhotoContainer: {
-    flex: 1,
-    maxWidth: "300px",
-    [theme.breakpoints.down("laptop")]: {
-      margin: "50px auto 0px",
-    },
+});
+const InnerPhotoContainer = styled("div")(({ theme }) => ({
+  flex: 1,
+  maxWidth: "300px",
+  [theme.breakpoints.down("laptop")]: {
+    margin: "50px auto 0px",
   },
-  responsivePhotoContainer: {
-    position: "relative",
-  },
-  photoBackgroundContainer: {
-    backgroundColor: `${DefaultThemes.colors.blueBolt}`,
-    position: "relative",
-    zIndex: 1,
-    paddingBottom: "100%",
-    height: 0,
-    width: "100%",
-    borderRadius: "12px",
-    "& img": {
-      opacity: 0.9,
-      zIndex: 2,
-      objectFit: "cover",
-      height: "100%",
-      width: "100%",
-      position: "absolute",
-      borderRadius: "10px",
-      transitionDuration: "0.2s",
-      "&:hover": {
-        opacity: 1,
-      },
-    },
-    "&:hover + $visualContainer": {
-      margin: "15px",
-    },
-  },
-  visualContainer: {
-    width: "100%",
+}));
+const ResponsivePhotoContainer = styled("div")({
+  position: "relative",
+});
+const VisualContainer = styled("div")({
+  width: "100%",
+  height: "100%",
+  border: `3px solid ${DefaultThemes.colors.blueBolt}`,
+  position: "absolute",
+  top: 0,
+  margin: "20px",
+  zIndex: 0,
+  borderRadius: "10px",
+  transitionDuration: "0.2s",
+});
+const PhotoBackgroundContainer = styled("div")({
+  backgroundColor: `${DefaultThemes.colors.blueBolt}`,
+  position: "relative",
+  zIndex: 1,
+  paddingBottom: "100%",
+  height: 0,
+  width: "100%",
+  borderRadius: "12px",
+  "& img": {
+    opacity: 0.9,
+    zIndex: 2,
+    objectFit: "cover",
     height: "100%",
-    border: `3px solid ${DefaultThemes.colors.blueBolt}`,
+    width: "100%",
     position: "absolute",
-    top: 0,
-    margin: "20px",
-    zIndex: 0,
     borderRadius: "10px",
     transitionDuration: "0.2s",
+    "&:hover": {
+      opacity: 1,
+    },
   },
-  // "@media (min-width: 481px)": {
-  //   mainContainer: {
-  //     margin: "0 25px",
-  //   },
-  // },
-  // "@media (min-width: 769px)": {
-  //   mainContainer: {
-  //     margin: "0 100px",
-  //   },
-  // },
-  // "@media (min-width: 1200px)": {
-  //   mainContainer: {
-  //     margin: "0 200px",
-  //   },
-  // },
-  // "@media (min-width: 1700px)": {
-  //   mainContainer: {
-  //     margin: "0 300px",
-  //   },
-  // },
-}));
+  "&:hover ~ .VisualContainer": {
+    margin: "15px",
+  },
+});
 const divAnimate = {
   offscreen: { opacity: 0, y: 100 },
   onscreen: {
@@ -138,19 +106,17 @@ const divAnimate = {
   },
 };
 const About = () => {
-  const classes = useStyles();
   return (
-    <motion.div
+    <MainContainer
       initial={"offscreen"}
       whileInView={"onscreen"}
       viewport={{ once: true, amount: 0.1 }}
       variants={divAnimate}
-      className={classes.mainContainer}
       id="about"
     >
       <GeneralHeader heading={"About me"} />
-      <Box className={classes.contentContainer}>
-        <Box className={classes.innerContentContainer}>
+      <ContentContainer>
+        <InnerContentContainer>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -183,18 +149,18 @@ const About = () => {
             <li>React</li>
             <li>Styled Componenets</li>
           </ul>
-        </Box>
+        </InnerContentContainer>
         {/*     P h o t o        s e c t  i o n    */}
-        <Box className={classes.innerPhotoContainer}>
-          <Box className={classes.responsivePhotoContainer}>
-            <Box className={classes.photoBackgroundContainer}>
+        <InnerPhotoContainer>
+          <ResponsivePhotoContainer>
+            <PhotoBackgroundContainer>
               <img src={photo} alt="img" />
-            </Box>
-            <Box className={classes.visualContainer} />
-          </Box>
-        </Box>
-      </Box>
-    </motion.div>
+            </PhotoBackgroundContainer>
+            <VisualContainer className="VisualContainer" />
+          </ResponsivePhotoContainer>
+        </InnerPhotoContainer>
+      </ContentContainer>
+    </MainContainer>
   );
 };
 export default About;

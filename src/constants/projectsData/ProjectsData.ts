@@ -1,9 +1,9 @@
 import gptPic from '../../assets/photos/GPT-3.png'
-import fullMoon from '../../assets/photos/full-moon.png'
+import fullMoonImage from '../../assets/photos/Full-moon.png'
 import ticTac from '../../assets/photos/ticTac.png'
 export const DATA = [
     {
-        pic: fullMoon,
+        pic: fullMoonImage,
         name: "FULL-MOON Project",
         header: "Restaurant",
         content: "Is Mads Mikkelsen a chef ? - I can cook, but I often eat alone when I do it, let's put it that way. (Laughs) I'm not the biggest chef in the world so that is something I have to act out.",

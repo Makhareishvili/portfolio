@@ -1,195 +1,257 @@
 import { Box, Button, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import makeStyles from "@mui/styles/makeStyles";
 import { useEffect, useRef, useState } from "react";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
 import { Sling as Hamburger } from "hamburger-react";
 import { Link } from "react-scroll";
-const useStyle = makeStyles(() => ({
-  defaultmainContainer: {
-    backgroundColor: `rgba(
-      ${DefaultThemes.colors.backgroundInRGB.r},
-      ${DefaultThemes.colors.backgroundInRGB.g},
-      ${DefaultThemes.colors.backgroundInRGB.b},0.9)`,
-    position: "absolute",
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "20px 40px",
-    zIndex: 4,
-    boxShadow: "rgba(0, 2, 5, 0.679) 0px 10px 10px -10px",
+import { css, keyframes, styled } from "@mui/system";
+import { rgba } from "polished";
+interface DefaultmainContainerProps {
+  scrollUp: boolean | null;
+  prevScrollPos: number;
+  isOpen: boolean;
+}
+interface MainMenuContainerProps {
+  isOpen: boolean;
+}
+interface BookButtonAnchorProps {
+  isOpen: boolean;
+}
+const listLoad = keyframes({
+  from: {
+    color: DefaultThemes.colors.blueBolt,
+    transform: "translateY(-30%)",
   },
-  activeMainContainer: {
-    position: "fixed",
-    animation:
-      "$animationSlideBottom .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
+  to: {
+    transform: "translateY(0)",
   },
-  inActiveMainContainer: {
-    // position: "absolute",
-    position: "fixed",
-    animation:
-      "$animationSlideTop .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
+});
+const animationSlideBottom = keyframes({
+  from: {
+    transform: "translateY(-100%)",
   },
-  shadowContainer: {
-    boxShadow: "unset",
-    transition: "box-shadow 1s ease",
+  to: {
+    transform: "translateY(0%)",
   },
-  logoContainer: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    border: `2px solid ${DefaultThemes.colors.blueBolt}`,
-    borderRadius: "50%",
-    height: "40px",
-    width: "40px",
-    cursor: "pointer",
-    "& p": {
-      position: "relative",
-      color: `${DefaultThemes.colors.blueBolt}`,
-    },
+});
+const animationSlideTop = keyframes({
+  from: {
+    transform: "translateY(0%)",
+  },
+  to: {
+    transform: "translateY(-110%)",
+  },
+});
+const openMenuAnimation = keyframes({
+  from: {
+    WebkitTransform: "translateX(100%)",
+    transform: "translateX(100%)",
+  },
+  to: {
+    WebkitTransform: "translateX(0%)",
+    transform: "translateX(0%)",
+  },
+});
+const closeMenuAnim = keyframes({
+  from: {
+    WebkitTransform: "translateX(0%)",
+    transform: "translateX(0%)",
+  },
+  to: {
+    WebkitTransform: "translateX(100%)",
+    transform: "translateX(100%)",
+  },
+});
+const DefaultmainContainer = styled("div")<DefaultmainContainerProps>`
+  background-color: ${rgba(
+    parseInt(DefaultThemes.colors.backgroundInRGB.r),
+    parseInt(DefaultThemes.colors.backgroundInRGB.g),
+    parseInt(DefaultThemes.colors.backgroundInRGB.b),
+    0.9
+  )};
+  position: absolute;
+  animation: ${({ scrollUp, isOpen }) =>
+    scrollUp || scrollUp === null || isOpen
+      ? css`
+          ${animationSlideBottom} .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+        `
+      : css`
+          ${animationSlideTop} .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+        `};
+  position: ${({ scrollUp }) =>
+    scrollUp || scrollUp === null ? "fixed" : "fixed"};
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  z-index: 4;
+  box-shadow: rgba(0, 2, 5, 0.679) 0px 10px 10px -10px;
+  box-shadow: ${({ prevScrollPos, isOpen }) =>
+    (prevScrollPos == 0 || isOpen) && "unset"};
+  background: ${({ isOpen }) => isOpen && "none"};
+  transition: ${({ prevScrollPos }) =>
+    prevScrollPos == 0 && "box-shadow 1s ease"};
+`;
+const LogoContainer = styled("div")`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid ${DefaultThemes.colors.blueBolt};
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  & p {
+    position: relative;
+    color: ${DefaultThemes.colors.blueBolt};
+  }
+  // animation
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  transform: scale(0);
+  animation-delay: 400ms;
+  animation-name: ${listLoad};
+`;
+const ListContainer = styled("div")`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & ul {
+    list-style-type: none;
+    display: flex;
+  }
+  & li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${DefaultThemes.colors.gainsBoro};
+    margin: 0 10px;
+    cursor: pointer;
     // animation
-    animationDuration: "100ms",
-    animationTimingFunction: "ease-in",
-    animationFillMode: "forwards",
-    transform: "scale(0)",
-    animationDelay: "400ms",
-    animationName: "$listLoad",
-  },
-  listContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    "& ul": {
-      listStyleType: "none",
-      display: "flex",
-    },
-    "& li": {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      color: `${DefaultThemes.colors.gainsBoro}`,
-      margin: "0 10px",
-      cursor: "pointer",
-      // animation
-      animationDuration: "100ms",
-      animationTimingFunction: "ease-in",
-      animationFillMode: "forwards",
-      transform: "scale(0)",
+    animation-duration: 100ms;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    transform: scale(0);
 
-      // childrens
-      "&:first-child": {
-        animationDelay: "400ms",
-        animationName: "$listLoad",
-      },
-      "&:nth-child(2)": {
-        animationDelay: "500ms",
-        animationName: "$listLoad",
-      },
-      "&:nth-child(3)": {
-        animationDelay: "600ms",
-        animationName: "$listLoad",
-      },
-      "&:last-child": {
-        animationDelay: "700ms",
-        animationName: "$listLoad",
-      },
-    },
-    "& a": {
-      fontSize: "18px",
-      "&:hover": {
-        color: `${DefaultThemes.colors.blueBolt}`,
-        transition: ".5s ease",
-      },
-    },
-  },
-  bookButton: {
-    textDecoration: "none",
+    // childrens
+    &:first-of-type {
+      animation-delay: 400ms;
+      animation-name: ${listLoad};
+    }
+    &:nth-of-type(2) {
+      animation-delay: 500ms;
+      animation-name: ${listLoad};
+    }
+    &:nth-of-type(3) {
+      animation-delay: 600ms;
+      animation-name: ${listLoad};
+    }
+    &:last-of-type {
+      animation-delay: 700ms;
+      animation-name: ${listLoad};
+    }
+  }
+  & a {
+    font-size: 18px;
+    &:hover {
+      color: ${DefaultThemes.colors.blueBolt};
+      transition: 0.5s ease;
+    }
+  }
+`;
+const BookButtonAnchor = styled("a")<BookButtonAnchorProps>`
+  text-decoration: none;
+  ${({ isOpen }) =>
+    isOpen &&
+    css`
+      // animation
+      animation-duration: 100ms;
+      animation-timing-function: ease-in;
+      animation-fill-mode: forwards;
+      transform: scale(0);
+      animation-delay: 800ms;
+      display: flex;
+      animation-name: ${listLoad};
+    `}
+`;
+const MainMenuContainer = styled("div")<MainMenuContainerProps>`
+  width: 70%;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  background-color: ${DefaultThemes.colors.nero};
+  z-index: 3;
+  // animation
+  animation: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  //
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+  }
+  & li {
+    margin: 0 auto 30px;
+    color: ${DefaultThemes.colors.gainsBoro};
+  }
+  animation-name: ${({ isOpen }) =>
+    isOpen ? openMenuAnimation : closeMenuAnim};
+  ${({ isOpen }) =>
+    isOpen &&
+    css`
+    animation-name: ${openMenuAnimation},
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & ul {
+    list-style-type: none;
+    display: flex;
+    }
+    & li {
+    display: flex;
+    justify-content: center;
+    align-items: "center";
+    color: ${DefaultThemes.colors.gainsBoro};
+    /* margin: 10px; */
+    cursor: pointer;
     // animation
-    animationDuration: "100ms",
-    animationTimingFunction: "ease-in",
-    animationFillMode: "forwards",
-    transform: "scale(0)",
-    animationDelay: "800ms",
-    animationName: "$listLoad",
-  },
-  // Menu for tablets/mobiles
-  mainMenuContainer: {
-    width: "70%",
-    height: "100vh",
-    position: "fixed",
-    right: 0,
-    backgroundColor: `${DefaultThemes.colors.nero}`,
-    zIndex: 3,
-    // animation
-    animation: ".3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
-    //
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    "& ul": {
-      listStyleType: "none",
-      display: "flex",
-      flexDirection: "column",
-    },
-    "& li": {
-      margin: "0 auto 30px",
-      color: `${DefaultThemes.colors.gainsBoro}`,
-    },
-  },
-  openMenuContainer: {
-    animationName: "$openMenuAnimation",
-  },
-  closeMenuContainer: {
-    animationName: "$closeMenuAnimation",
-  },
-  "@keyframes listLoad": {
-    "0%": {
-      color: `${DefaultThemes.colors.blueBolt}`,
-      transform: "translateY(-30%)",
-    },
-    "100%": {
-      transform: "translateY(0)",
-    },
-  },
-  "@keyframes openMenuAnimation": {
-    "0%": {
-      WebkitTransform: "translateX(100%)",
-      transform: "translateX(100%)",
-    },
-    "100%": {
-      WebkitTransform: "translateX(0%)",
-      transform: "translateX(0%)",
-    },
-  },
-  "@keyframes closeMenuAnimation": {
-    "0%": {
-      WebkitTransform: "translateX(0%)",
-      transform: "translateX(0%)",
-    },
-    "100%": {
-      WebkitTransform: "translateX(100%)",
-      transform: "translateX(100%)",
-    },
-  },
-  "@keyframes animationSlideBottom": {
-    "0%": {
-      WebkitTransform: "translateY(-100%)",
-    },
-    "100%": {
-      WebkitTransform: "translateY(0%)",
-    },
-  },
-  "@keyframes animationSlideTop": {
-    "0%": {
-      WebkitTransform: "translateY(0%)",
-    },
-    "100%": {
-      WebkitTransform: "translateY(-110%)",
-    },
-  },
-}));
+    animation-duration: 100ms;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    transform: scale(0);
+
+    // childrens
+    &:first-of-type {
+      animation-delay: 400ms;
+      animation-name: ${listLoad};
+    }
+    &:nth-of-type(2) {
+      animation-delay: 500ms;
+      animation-name: ${listLoad};
+    }
+    &:nth-of-type(3) {
+      animation-delay: 600ms;
+      animation-name: ${listLoad};
+    }
+    &:last-of-type {
+      animation-delay: 700ms;
+      animation-name: ${listLoad};
+    }
+  }
+  & a {
+    font-size: 18px;
+    &:hover {
+      color: ${DefaultThemes.colors.blueBolt};
+      transition: .5s ease;
+    }
+  }
+    `};
+`;
 const NavbarList = (): JSX.Element => {
   return (
     <ul>
@@ -216,11 +278,12 @@ const NavbarList = (): JSX.Element => {
     </ul>
   );
 };
-const BookButton = ({ classes, isOpen }: any): JSX.Element => {
+const BookButton = ({ isOpen }: any): JSX.Element => {
   return (
-    <a
-      style={{ display: isOpen || isOpen === null ? "flex" : "none" }}
-      className={classes.bookButton}
+    <BookButtonAnchor
+      // style={{ display: isOpen ? "flex" : "none" }}
+      //++
+      isOpen={isOpen}
       href="mailto:levanimakharei7li@gmail.com"
     >
       <Button
@@ -229,13 +292,14 @@ const BookButton = ({ classes, isOpen }: any): JSX.Element => {
       >
         Book a meeting
       </Button>
-    </a>
+    </BookButtonAnchor>
   );
 };
 const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [scrollUp, setScrollUp] = useState<boolean | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [closeOpen, setCloseOpen] = useState<boolean>(false);
   const navbarRef = useRef(null);
   useEffect(() => {
     function handleScroll() {
@@ -250,37 +314,36 @@ const Navbar = () => {
     };
   }, [prevScrollPos]);
   useEffect(() => {
+    if (isOpen) {
+      setCloseOpen(true);
+    }
     // Update the CSS 'overflow' property of the 'body' element
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
-
-  const classes = useStyle();
+  const handleToggle = () => {};
   const theme = useTheme();
   const breakPointTablet = useMediaQuery(theme.breakpoints.down("laptop"));
   return (
     <>
-      <Box
+      <DefaultmainContainer
+        scrollUp={scrollUp}
+        prevScrollPos={prevScrollPos}
+        isOpen={isOpen}
         ref={navbarRef}
-        className={`${classes.defaultmainContainer} ${
-          scrollUp || scrollUp == null
-            ? classes.activeMainContainer
-            : classes.inActiveMainContainer
-        } ${prevScrollPos == 0 && classes.shadowContainer}`}
       >
         <Link to="header" smooth>
-          <Box className={classes.logoContainer}>
+          <LogoContainer>
             <p> M </p>
-          </Box>
+          </LogoContainer>
         </Link>
         {!breakPointTablet ? (
           <>
-            <Box
-              className={classes.listContainer}
-              sx={{ display: breakPointTablet ? "none" : "flex" }}
+            <ListContainer
+              style={{ display: breakPointTablet ? "none" : "flex" }}
             >
               <NavbarList />
-              <BookButton classes={classes} isOpen={isOpen} />
-            </Box>
+              <BookButton isOpen={true} />
+            </ListContainer>
           </>
         ) : (
           <Box>
@@ -291,25 +354,22 @@ const Navbar = () => {
             />
           </Box>
         )}
-      </Box>
-      {breakPointTablet && isOpen !== null && (
+      </DefaultmainContainer>
+      {breakPointTablet && (
         <>
-          {isOpen ? (
+          {isOpen && (
             <>
-              <Box
-                className={`${classes.listContainer} ${classes.mainMenuContainer} ${classes.openMenuContainer}`}
-              >
+              <MainMenuContainer isOpen={true}>
                 <NavbarList />
-                <BookButton classes={classes} isOpen={isOpen} />
-              </Box>
+                <BookButton isOpen={isOpen} />
+              </MainMenuContainer>
             </>
-          ) : (
-            <Box
-              className={`${classes.mainMenuContainer} ${classes.closeMenuContainer}`}
-            >
+          )}
+          {closeOpen && !isOpen && (
+            <MainMenuContainer isOpen={false}>
               <NavbarList />
-              <BookButton classes={classes} />
-            </Box>
+              <BookButton isOpen={isOpen} />
+            </MainMenuContainer>
           )}
         </>
       )}
