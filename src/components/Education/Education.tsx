@@ -8,19 +8,16 @@ import { styled } from "@mui/system";
 const MainContainer = styled(motion.div)(({ theme }) => ({
   // color: "#ccd6f6",
   // color: "#8892b0",
-
   maxWidth: "1000px",
   margin: "0px auto",
   height: "100%",
   "& h2": {
     color: "#ccd6f6",
     textAlign: "center",
-    [theme.breakpoints.down("desktop")]: {
-      fontSize: "18px",
-    },
-    [theme.breakpoints.down("tablet")]: {
-      // paddingTop: "60px",
-    },
+  },
+  [theme.breakpoints.down("desktop")]: {
+    "& h2": { fontSize: "18px" },
+    paddingTop: "70px",
   },
 }));
 const ContentContainer = styled("div")(({ theme }) => ({

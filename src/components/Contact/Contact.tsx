@@ -173,7 +173,7 @@ const ContactContainer = styled("div")(({ theme }) => ({
     marginTop: "30px",
   },
 }));
-const DisplayMessageContainer = styled("div")({
+const DisplayMessageContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -199,7 +199,25 @@ const DisplayMessageContainer = styled("div")({
     marginTop: "20px",
   },
   "& h2": { lineHeight: "2em" },
-});
+  [theme.breakpoints.down("tv")]: {
+    width: "30%",
+    left: "40%",
+  },
+  [theme.breakpoints.down("laptop")]: {
+    width: "40%",
+    left: "30%",
+  },
+  [theme.breakpoints.down("tablet")]: {
+    width: "60%",
+    left: "20%",
+    height: "100px",
+    "& svg": {
+      fontSize: "1.5em",
+    },
+    "& h2": { lineHeight: "2em", fontSize: "10px" },
+    "& p": { lineHeight: "1em", fontSize: "10px" },
+  },
+}));
 const Contact = () => {
   const [disable, setDisable] = useState(false);
   const [displayVisible, setDisplayVisible] = useState(false);
