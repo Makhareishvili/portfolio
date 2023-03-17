@@ -1,9 +1,13 @@
 import { Box, Theme } from "@mui/material";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
-import { DATA } from "../../constants/ProjectsData/ProjectsData";
+import { DATA, IDATA } from "../../constants/ProjectsData/ProjectsData";
 import GeneralHeader from "../GenerealHEader/GeneralHeader";
 import { motion } from "framer-motion";
 import { styled } from "@mui/system";
+interface IprojectComponent {
+  index: number;
+  projectInfo: IDATA;
+}
 interface ContentContainerProps {
   index: number;
 }
@@ -116,7 +120,10 @@ const ReplacedTechList = styled("div")({
     },
   },
 });
-const ProjectComponent = ({ index, projectInfo }: any): any => {
+const ProjectComponent = ({
+  index,
+  projectInfo,
+}: IprojectComponent): JSX.Element => {
   return (
     <ContentContainer index={index}>
       <ProjectImgContainer>
@@ -158,7 +165,7 @@ const Portfolio = () => {
       id="portfolio"
     >
       <GeneralHeader heading={"Portofio"} />
-      {DATA.map((data, ind) => {
+      {DATA.map((data: IDATA, ind: number) => {
         let index = ind % 2;
         return <ProjectComponent key={ind} index={index} projectInfo={data} />;
       })}

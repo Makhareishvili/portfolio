@@ -1,7 +1,14 @@
 import gptPic from '../../assets/photos/GPT-3.png'
 import fullMoonImage from '../../assets/photos/Full-moon.png'
 import ticTac from '../../assets/photos/ticTac.png'
-export const DATA = [
+export interface IDATA {
+        pic: string;
+        name: string;
+        header: string;
+        content: string;
+        techList: string[];
+}
+export const DATA: IDATA[] = [
     {
         pic: fullMoonImage,
         name: "FULL-MOON Project",
