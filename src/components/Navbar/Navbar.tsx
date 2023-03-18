@@ -278,7 +278,7 @@ const MainMenuContainer = styled("div")<MainMenuContainerProps>`
   }
     `};
 `;
-const handleListLink = ({ setIsOpen, closeOpen }: NavbarListProps) => {
+const handleMenuClose = ({ setIsOpen, closeOpen }: NavbarListProps) => {
   if (closeOpen) {
     setIsOpen && setIsOpen(false);
   }
@@ -294,7 +294,7 @@ const NavbarList = ({ setIsOpen, closeOpen }: NavbarListProps): JSX.Element => {
           to="about"
           duration={1000}
           offset={-150}
-          onClick={() => handleListLink({ setIsOpen, closeOpen })}
+          onClick={() => handleMenuClose({ setIsOpen, closeOpen })}
         >
           About
         </Link>
@@ -307,7 +307,7 @@ const NavbarList = ({ setIsOpen, closeOpen }: NavbarListProps): JSX.Element => {
           duration={1000}
           offset={-150}
           spy={true}
-          onClick={() => handleListLink({ setIsOpen, closeOpen })}
+          onClick={() => handleMenuClose({ setIsOpen, closeOpen })}
         >
           Portfolio
         </Link>
@@ -320,7 +320,7 @@ const NavbarList = ({ setIsOpen, closeOpen }: NavbarListProps): JSX.Element => {
           to="education"
           duration={1000}
           offset={-150}
-          onClick={() => handleListLink({ setIsOpen, closeOpen })}
+          onClick={() => handleMenuClose({ setIsOpen, closeOpen })}
         >
           Education
         </Link>
@@ -333,7 +333,7 @@ const NavbarList = ({ setIsOpen, closeOpen }: NavbarListProps): JSX.Element => {
           to="contact"
           duration={1000}
           offset={100}
-          onClick={() => handleListLink({ setIsOpen, closeOpen })}
+          onClick={() => handleMenuClose({ setIsOpen, closeOpen })}
         >
           Contact
         </Link>
@@ -393,7 +393,9 @@ const Navbar = () => {
         ref={navbarRef}
       >
         <Link to="header" smooth>
-          <LogoContainer>
+          <LogoContainer
+            onClick={() => handleMenuClose({ setIsOpen, closeOpen })}
+          >
             <p> M </p>
           </LogoContainer>
         </Link>
