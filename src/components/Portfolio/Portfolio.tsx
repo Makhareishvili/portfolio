@@ -1,9 +1,9 @@
-import { Box, Theme } from "@mui/material";
+import { Link, useMediaQuery } from "@mui/material";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
 import { DATA, IDATA } from "../../constants/ProjectsData/ProjectsData";
 import GeneralHeader from "../GenerealHEader/GeneralHeader";
 import { motion } from "framer-motion";
-import { styled } from "@mui/system";
+import { styled, useTheme } from "@mui/system";
 interface IprojectComponent {
   index: number;
   projectInfo: IDATA;
@@ -145,30 +145,24 @@ const TechList = styled("div")<ContentContainerProps>(({ theme, index }) => ({
     },
   },
 }));
-const ReplacedContentContainer = styled("div")({
-  justifyContent: "flex-end",
-});
-const replacedProjectContentContainer = styled("div")({
-  left: 0,
-  "& p": {
-    textAlign: "left",
-  },
-});
-const ReplacedTechList = styled("div")({
-  justifyContent: "flex-start",
-  "& p": {
-    "& p:last-of-type": {
-      marginLeft: 0,
-    },
-  },
-});
 const ProjectComponent = ({
   index,
   projectInfo,
 }: IprojectComponent): JSX.Element => {
+  const theme = useTheme();
+  const breakPointTablet = useMediaQuery(theme.breakpoints.down("desktop"));
   return (
-    <ContentContainer index={index}>
-      <ProjectImgContainer>
+    <ContentContainer
+      index={index}
+      onClick={() => {
+        breakPointTablet && window.open(projectInfo.link, "_blank");
+      }}
+    >
+      <ProjectImgContainer
+        onClick={() => {
+          window.open(projectInfo.link, "_blank");
+        }}
+      >
         <img src={projectInfo.pic} alt="first project img" />
       </ProjectImgContainer>
       <ProjectContentContainer index={index}>
