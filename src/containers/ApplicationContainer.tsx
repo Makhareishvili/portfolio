@@ -56,7 +56,7 @@ const ApplicationContainer = () => {
           <NavbarContainer />
           <SideElementContainer />
           <Responsive>
-            <MainContainer>
+            <MainContainer id="mainRootContainer">
               <HeaderContainer />
               <AboutContainer />
               <PortfolioContainer />

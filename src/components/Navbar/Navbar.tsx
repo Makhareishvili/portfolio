@@ -377,6 +377,10 @@ const Navbar = () => {
     }
     // Update the CSS 'overflow' property of the 'body' element
     document.body.style.overflow = isOpen ? "hidden" : "auto";
+    const element = document.getElementById("mainRootContainer");
+    if (element) {
+      element.style.filter = isOpen ? "blur(4px) brightness(.7)" : "unset";
+    }
   }, [isOpen]);
   const theme = useTheme();
   const breakPointTablet = useMediaQuery(theme.breakpoints.down("laptop"));
