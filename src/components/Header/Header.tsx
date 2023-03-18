@@ -64,22 +64,24 @@ const ContentContainer = styled("div")(({ theme }) => ({
   },
   [theme.breakpoints.up("mobile")]: {
     "& > p:nth-of-type(4)": {
-      fontSize: "12px",
+      fontSize: "17px",
       marginTop: "12px",
+      maxWidth: "300px",
     },
     "& > p:nth-of-type(1)": {
-      fontSize: "12px",
+      fontSize: "16px",
     },
     "& > p:nth-of-type(2)": {
-      fontSize: "22px",
+      fontSize: "25px",
     },
     "& > p:nth-of-type(3)": {
-      fontSize: "22px",
+      fontSize: "25px",
     },
   },
   [theme.breakpoints.up("tablet")]: {
     "& > p:nth-of-type(4)": {
       fontSize: "14px",
+      maxWidth: "unset",
     },
     "& > p:nth-of-type(1)": {
       fontSize: "12px",
@@ -127,11 +129,6 @@ const ContentContainer = styled("div")(({ theme }) => ({
       fontSize: "77px",
     },
   },
-  [theme.breakpoints.down("tablet")]: {
-    "& > p:nth-of-type(4)": {
-      maxWidth: "300px",
-    },
-  },
 }));
 const BookButton = styled("div")(({ theme }) => ({
   [theme.breakpoints.down("laptop")]: {
@@ -144,7 +141,7 @@ const BookButton = styled("div")(({ theme }) => ({
   [theme.breakpoints.down("tablet")]: {
     "&": {
       "& a": {
-        fontSize: "10px",
+        fontSize: "13px",
         marginTop: "24px",
       },
     },

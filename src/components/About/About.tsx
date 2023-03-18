@@ -74,7 +74,7 @@ const InnerPhotoContainer = styled("div")(({ theme }) => ({
     margin: "50px auto 0px",
   },
   [theme.breakpoints.down("tablet")]: {
-    maxWidth: "200px",
+    maxWidth: "230px",
   },
 }));
 const ResponsivePhotoContainer = styled("div")({

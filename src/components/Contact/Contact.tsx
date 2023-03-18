@@ -85,6 +85,9 @@ const TextFieldInput = styled(TextField)(({ theme }) => ({
     [theme.breakpoints.down("tablet")]: {
       fontSize: ".8em",
     },
+    [theme.breakpoints.up("laptop")]: {
+      fontSize: "1em",
+    },
   },
   "& .MuiInputBase-input": {
     color: "#8892b0", // change the text color here

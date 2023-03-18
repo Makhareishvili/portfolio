@@ -33,6 +33,9 @@ const HeadingContainer = styled("div")(({ theme }) => ({
     [theme.breakpoints.down("laptop")]: {
       width: "100%",
     },
+    [theme.breakpoints.down("tablet")]: {
+      marginLeft: ".5em",
+    },
   },
 }));
 const GeneralHeader = ({ heading }: Props) => {

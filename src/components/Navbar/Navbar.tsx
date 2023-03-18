@@ -6,6 +6,10 @@ import { Sling as Hamburger } from "hamburger-react";
 import { Link } from "react-scroll";
 import { css, keyframes, styled } from "@mui/system";
 import { rgba } from "polished";
+interface NavbarListProps {
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  closeOpen?: boolean;
+}
 interface DefaultmainContainerProps {
   scrollUp: boolean | null;
   prevScrollPos: number;
@@ -274,7 +278,12 @@ const MainMenuContainer = styled("div")<MainMenuContainerProps>`
   }
     `};
 `;
-const NavbarList = (): JSX.Element => {
+const handleListLink = ({ setIsOpen, closeOpen }: NavbarListProps) => {
+  if (closeOpen) {
+    setIsOpen && setIsOpen(false);
+  }
+};
+const NavbarList = ({ setIsOpen, closeOpen }: NavbarListProps): JSX.Element => {
   return (
     <ul>
       <li>
@@ -285,6 +294,7 @@ const NavbarList = (): JSX.Element => {
           to="about"
           duration={1000}
           offset={-150}
+          onClick={() => handleListLink({ setIsOpen, closeOpen })}
         >
           About
         </Link>
@@ -297,6 +307,7 @@ const NavbarList = (): JSX.Element => {
           duration={1000}
           offset={-150}
           spy={true}
+          onClick={() => handleListLink({ setIsOpen, closeOpen })}
         >
           Portfolio
         </Link>
@@ -309,6 +320,7 @@ const NavbarList = (): JSX.Element => {
           to="education"
           duration={1000}
           offset={-150}
+          onClick={() => handleListLink({ setIsOpen, closeOpen })}
         >
           Education
         </Link>
@@ -321,6 +333,7 @@ const NavbarList = (): JSX.Element => {
           to="contact"
           duration={1000}
           offset={100}
+          onClick={() => handleListLink({ setIsOpen, closeOpen })}
         >
           Contact
         </Link>
@@ -404,7 +417,7 @@ const Navbar = () => {
           {isOpen && (
             <>
               <MainMenuContainer isOpen={true}>
-                <NavbarList />
+                <NavbarList setIsOpen={setIsOpen} closeOpen={closeOpen} />
                 <BookButton isOpen={isOpen} />
               </MainMenuContainer>
             </>
