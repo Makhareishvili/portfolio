@@ -29,7 +29,7 @@ export const DATA: IDATA[] = [
     techList: ["TypeScript", "React", "CSS"],
   },
   {
-    link: "https://makhareishvili.github.io/full-moon-restaurant/",
+    link: "https://makhareishvili.github.io/Tic-tac-toe/",
     pic: ticTac,
     name: "Tic tac toe Project",
     header: "Game",
