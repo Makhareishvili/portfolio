@@ -1,6 +1,6 @@
 import { Box, Theme } from "@mui/material";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
-import photo from "../../assets/photos/mads.png";
+import photo from "../../assets/photos/Lm.png";
 import GeneralHeader from "../GenerealHEader/GeneralHeader";
 import { motion } from "framer-motion";
 import { styled } from "@mui/system";
@@ -63,6 +63,16 @@ const InnerContentContainer = styled("div")(({ theme }) => ({
         "&:last-of-type": {
           width: "60%",
         },
+      },
+    },
+  },
+  [theme.breakpoints.up("laptop")]: {
+    "& p": {
+      fontSize: "18px",
+    },
+    "& ul": {
+      "& li": {
+        fontSize: "16px",
       },
     },
   },
@@ -140,27 +150,23 @@ const About = () => {
       <ContentContainer>
         <InnerContentContainer>
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
+            Hello! I am Levani, a web developer who enjoys creating beautiful
+            and functional websites. My main focus is on developing my skills
+            and improving my knowledge in the field. I am always looking for new
+            challenges that can help me grow both personally and professionally.
+            One of my favorite aspects of web development is finding and fixing
+            bugs in code. I take pride in writing clear, concise, and efficient
+            code that can be easily maintained and modified as needed.
           </p>
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
+            I am constantly seeking ways to improve my skills, whether it's
+            through online courses, attending conferences, or networking with
+            other professionals in the industry.
           </p>
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
+            Overall, I am passionate about web development and am always
+            striving to learn and improve in this exciting and constantly
+            evolving field.
           </p>
           <p>Here are a few technologies I’ve been working with recently:</p>
           <ul>

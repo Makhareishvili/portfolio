@@ -166,7 +166,7 @@ const ProjectComponent = ({
         <img src={projectInfo.pic} alt="first project img" />
       </ProjectImgContainer>
       <ProjectContentContainer index={index}>
-        <p>{projectInfo.name}</p>
+        <p style={{ color: "#87a2f9" }}>{projectInfo.name}</p>
         <p>{projectInfo.header}</p>
         <DescriptionContainer>
           <p style={{ lineHeight: "1.3em" }}>{projectInfo.content}</p>

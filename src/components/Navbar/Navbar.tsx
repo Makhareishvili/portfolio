@@ -6,6 +6,7 @@ import { Sling as Hamburger } from "hamburger-react";
 import { Link } from "react-scroll";
 import { css, keyframes, styled } from "@mui/system";
 import { rgba } from "polished";
+import logo2 from "../../assets/photos/Logo1.png";
 interface NavbarListProps {
   setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   closeOpen?: boolean;
@@ -88,7 +89,7 @@ const DefaultmainContainer = styled("div")<DefaultmainContainerProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  padding: 10px 40px;
   z-index: 4;
   box-shadow: rgba(0, 2, 5, 0.679) 0px 10px 10px -10px;
   box-shadow: ${({ prevScrollPos, isOpen }) =>
@@ -97,46 +98,71 @@ const DefaultmainContainer = styled("div")<DefaultmainContainerProps>`
   transition: ${({ prevScrollPos }) =>
     prevScrollPos == 0 && "box-shadow 1s ease"};
   ${({ theme }) => theme.breakpoints.down("tablet")} {
-    padding: 15px;
-    /* height: 50px; */
+    padding: 5px;
   }
 `;
-const LogoContainer = styled("div")`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid ${DefaultThemes.colors.blueBolt};
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  font-weight: 600;
-  cursor: pointer;
-  & p {
-    position: relative;
-    color: ${DefaultThemes.colors.blueBolt};
-  }
-  // animation
-  animation-duration: 100ms;
-  animation-timing-function: ease-in;
-  animation-fill-mode: forwards;
-  transform: scale(0);
-  animation-delay: 400ms;
-  animation-name: ${listLoad};
-  ${({ theme }) => theme.breakpoints.up("tablet")} {
-    width: 50px;
-    height: 50px;
-    & p {
-      font-size: 20px;
-    }
-  }
-  ${({ theme }) => theme.breakpoints.down("tablet")} {
-    width: 32px;
-    height: 32px;
-    & p {
-      font-size: 15px;
-    }
-  }
-`;
+// const LogoContainer = styled("div")`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   border: 2px solid ${DefaultThemes.colors.blueBolt};
+//   border-radius: 50%;
+//   height: 40px;
+//   width: 40px;
+//   font-weight: 600;
+//   cursor: pointer;
+//   & p {
+//     position: relative;
+//     color: ${DefaultThemes.colors.blueBolt};
+//   }
+//   // animation
+//   animation-duration: 100ms;
+//   animation-timing-function: ease-in;
+//   animation-fill-mode: forwards;
+//   transform: scale(0);
+//   animation-delay: 400ms;
+//   animation-name: ${listLoad};
+//   ${({ theme }) => theme.breakpoints.up("tablet")} {
+//     width: 50px;
+//     height: 50px;
+//     & p {
+//       font-size: 20px;
+//     }
+//   }
+//   ${({ theme }) => theme.breakpoints.down("tablet")} {
+//     width: 32px;
+//     height: 32px;
+//     & p {
+//       font-size: 15px;
+//     }
+//   }
+// `;
+const LogoContainer = styled("div")(({ theme }) => ({
+  width: "60px",
+  height: "60px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  cursor: "pointer",
+  "& img": {
+    width: "100%",
+    height: "100%",
+  },
+  "& p": {
+    fontSize: "14px",
+    fontWeight: "900",
+    position: "absolute",
+    color: DefaultThemes.colors.blueBolt,
+    marginTop: "5px",
+  },
+  [theme.breakpoints.down("tablet")]: {
+    width: "45px",
+    height: "45px",
+    "& p": {
+      fontSize: "10px",
+    },
+  },
+}));
 const ListContainer = styled("div")`
   display: flex;
   justify-content: center;
@@ -397,6 +423,7 @@ const Navbar = () => {
             onClick={() => handleMenuClose({ setIsOpen, closeOpen })}
           >
             <p> M </p>
+            <img src={logo2} alt="logo img" />
           </LogoContainer>
         </Link>
         {!breakPointTablet ? (

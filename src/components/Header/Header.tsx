@@ -17,7 +17,7 @@ const ContentContainer = styled("div")(({ theme }) => ({
   justifyContent: "center",
   flexDirection: "column",
   margin: "0px auto",
-  maxWidth: "1000px",
+  maxWidth: "1030px",
   "& p": {
     // animation
     animationDuration: "100ms",
@@ -160,11 +160,12 @@ const Header = () => {
       <ContentContainer id="header">
         <p>Hola, my name is</p>
         <p>Levani Makhareishvili</p>
-        <p>I build things for the web.</p>
+        <p>Inter Front-end Developer.</p>
         <p>
-          I’m a software engineer specializing in building (and occasionally
-          designing) exceptional digital experiences. Currently, I’m focused on
-          building accessible, human-centered products at Upstatement.
+          As a detail-oriented Front-end Developer, I am constantly striving to
+          improve my skills and stay up-to-date with new technologies. With a
+          passion for crafting seamless web experiences, I enjoy using my
+          creativity to solve complex problems.
         </p>
         <BookButton>
           <Button

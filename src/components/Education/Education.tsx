@@ -32,6 +32,9 @@ const ContentContainer = styled("div")(({ theme }) => ({
     [theme.breakpoints.down("tablet")]: {
       fontSize: "12px",
     },
+    [theme.breakpoints.up("desktop")]: {
+      fontSize: "18px",
+    },
   },
   "& h3": {
     [theme.breakpoints.down("desktop")]: {
@@ -87,26 +90,32 @@ const Education = () => {
       <h2>Passion for the Tech Industry and technical skills</h2>
       <ContentContainer>
         <p>
-          I've always been fascinated by the world of technology, even before I
-          started studying computer science at Tbilisi State University. When I
-          first started my program, I quickly realized that my passion for
-          technology was only going to grow stronger. With each passing day, I
-          found myself more and more immersed in the subject matter, spending
-          countless hours poring over textbooks and tinkering with various
-          technologies.
+          It all started with a simple curiosity back in 2021. I was browsing
+          the web when I stumbled upon a beautifully designed website. I was
+          intrigued by how it worked and how the different elements came
+          together to create a seamless user experience. I decided to dig deeper
+          and discovered the world of web development. It felt like a puzzle
+          waiting to be solved, and I was determined to unlock its secrets. I
+          started with the basics, tinkering with colored texts, animated
+          elements, inputs, and lists using HTML & CSS. As I experimented and
+          explored, I uncovered the foundations of web development and realized
+          that I wanted to dive deeper.
         </p>
         <p>
-          Despite the rigorous demands of my coursework, I was determined to
-          deepen my knowledge of the field outside of the university as well. I
-          spent my free time teaching myself about the latest advancements in
-          the industry, attending tech conferences, and experimenting with new
-          technologies.
+          I enrolled in the Computer Science program at Ivane Javakhishvili
+          Tbilisi State University in 2021 and learned the fundamentals of
+          programming languages, object-oriented programming, data structures,
+          algorithms, and more. But that was just the beginning.
         </p>
         <p>
-          Looking back on my journey, I can confidently say that my passion for
-          technology has only grown stronger with each passing day. As I
-          continue to explore this ever-evolving field, I am excited to see what
-          new discoveries and advancements lie ahead.
+          I knew that if I wanted to excel in this field, I needed to
+          continuously learn and grow beyond the classroom. So, I delved into
+          independent studies and explored various technologies such as
+          TypeScript, JavaScript, React.Js and others. To put my newfound
+          knowledge to the test, I completed practical assignments on various
+          platforms such as HackerRank, SoloLearn, FreeCodeCamp, and more. Each
+          challenge I conquered gave me a sense of accomplishment and fueled my
+          drive to learn more.
         </p>
         <Box>
           <h3>Skills:</h3>

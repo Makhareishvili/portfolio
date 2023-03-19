@@ -13,7 +13,7 @@ export const DATA: IDATA[] = [
   {
     link: "https://makhareishvili.github.io/full-moon-restaurant/",
     pic: fullMoonImage,
-    name: "FULL-MOON Project",
+    name: "FULL-MOON",
     header: "Restaurant",
     content:
       "Is Mads Mikkelsen a chef ? - I can cook, but I often eat alone when I do it, let's put it that way. (Laughs) I'm not the biggest chef in the world so that is something I have to act out.",
@@ -22,7 +22,7 @@ export const DATA: IDATA[] = [
   {
     link: "https://makhareishvili.github.io/GPT-3/",
     pic: gptPic,
-    name: "GPT-3 Project",
+    name: "GPT-3",
     header: "OpenAI",
     content:
       "Let's Build Something amazing with GPT-3 OpenAI. The possibilities are beyond your imagination.",
@@ -31,7 +31,7 @@ export const DATA: IDATA[] = [
   {
     link: "https://makhareishvili.github.io/Tic-tac-toe/",
     pic: ticTac,
-    name: "Tic tac toe Project",
+    name: "Tic tac toe",
     header: "Game",
     content:
       "a game in which two players seek in alternate turns to complete a row, a column, or a diagonal with either three O's or three X's drawn in the spaces of a grid of nine squares.",
