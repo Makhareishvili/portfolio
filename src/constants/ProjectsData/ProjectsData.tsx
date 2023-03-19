@@ -20,7 +20,7 @@ export const DATA: IDATA[] = [
     techList: ["TypeScript", "React", "CSS"],
   },
   {
-    link: "https://makhareishvili.github.io/full-moon-restaurant/",
+    link: "https://makhareishvili.github.io/GPT-3/",
     pic: gptPic,
     name: "GPT-3 Project",
     header: "OpenAI",
