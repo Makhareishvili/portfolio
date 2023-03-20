@@ -200,7 +200,7 @@ const Portfolio = () => {
       variants={divAnimate}
       id="portfolio"
     >
-      <GeneralHeader heading={"Portofio"} />
+      <GeneralHeader heading={"Portfolio"} />
       {DATA.map((data: IDATA, ind: number) => {
         let index = ind % 2;
         return <ProjectComponent key={ind} index={index} projectInfo={data} />;

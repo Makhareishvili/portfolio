@@ -159,14 +159,14 @@ const About = () => {
             code that can be easily maintained and modified as needed.
           </p>
           <p>
-            I am constantly seeking ways to improve my skills, whether it's
-            through online courses, attending conferences, or networking with
-            other professionals in the industry.
+            I am always seeking ways to enhance my skills in web development,
+            whether it's through online courses, attending conferences, or
+            networking with other professionals in the industry.
           </p>
           <p>
-            Overall, I am passionate about web development and am always
-            striving to learn and improve in this exciting and constantly
-            evolving field.
+            Overall, I am passionate about web development and continuously
+            strive to learn and improve in this exciting and constantly evolving
+            field.
           </p>
           <p>Here are a few technologies I’ve been working with recently:</p>
           <ul>
