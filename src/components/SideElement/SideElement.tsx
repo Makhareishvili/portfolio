@@ -97,12 +97,12 @@ const SideElement = () => {
       <LeftContainer>
         <ul>
           <li>
-            <a href="https://github.com/Makhareishvili">
+            <a target={"_blank"} href="https://github.com/Makhareishvili">
               <GitHubIcon fontSize="large" />
             </a>
           </li>
           <li>
-            <a href="https://www.instagram.com/makharei7liii">
+            <a target={"_blank"} href="https://www.instagram.com/makharei7liii">
               <InstagramIcon />
             </a>
           </li>
@@ -117,7 +117,10 @@ const SideElement = () => {
             </a>
           </li>
           <li>
-            <a href="https://www.facebook.com/Levani.Makhareishvili.0">
+            <a
+              target={"_blank"}
+              href="https://www.facebook.com/Levani.Makhareishvili.0"
+            >
               <FacebookIcon />
             </a>
           </li>
