@@ -1,6 +1,7 @@
 import gptPic from "../../assets/photos/GPT-3.png";
 import fullMoonImage from "../../assets/photos/Full-moon.png";
 import ticTac from "../../assets/photos/ticTac.png";
+import toDoApp from "../../assets/photos/todoapp.png";
 export interface IDATA {
   link: string;
   pic: string;
@@ -27,6 +28,15 @@ export const DATA: IDATA[] = [
     content:
       "Let's Build Something amazing with GPT-3 OpenAI. The possibilities are beyond your imagination.",
     techList: ["TypeScript", "React", "CSS"],
+  },
+  {
+    link: "https://makhareishvili.github.io/to-do-list-app/",
+    pic: toDoApp,
+    name: "To-do",
+    header: "App",
+    content:
+      "ToDo List App is a kind of app that generally used to maintain our day-to-day tasks or list everything that we have to do.It is helpful in planning our daily schedules.",
+    techList: ["TypeScript", "React", "Sass"],
   },
   {
     link: "https://makhareishvili.github.io/Tic-tac-toe/",

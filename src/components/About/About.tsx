@@ -1,9 +1,9 @@
-import { Box, Theme } from "@mui/material";
 import { DefaultThemes } from "../../Themes/DefaultThemes";
 import photo from "../../assets/photos/Lm.png";
 import GeneralHeader from "../GenerealHEader/GeneralHeader";
 import { motion } from "framer-motion";
 import { styled } from "@mui/system";
+import RecentlyTechs from "../../constants/RecentlyTechs/RecentlyTechs";
 const MainContainer = styled(motion.div)(({ theme }) => ({
   paddingBottom: "100px",
   margin: "0px auto",
@@ -170,12 +170,9 @@ const About = () => {
           </p>
           <p>Here are a few technologies I’ve been working with recently:</p>
           <ul>
-            <li>TypeScript</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>Material UI</li>
-            <li>React</li>
-            <li>Styled Componenets</li>
+            {RecentlyTechs.map((tech, index) => (
+              <li key={index}>{tech}</li>
+            ))}
           </ul>
         </InnerContentContainer>
         {/*     P h o t o        s e c t  i o n    */}

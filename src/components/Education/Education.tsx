@@ -137,6 +137,10 @@ const Education = () => {
             ➠ Javscript Library ( <span>React</span> )
           </p>
           <p>
+            {" "}
+            ➠ <span>Scss</span> / <span>Sass</span>
+          </p>
+          <p>
             ➠ <span>Material UI</span>
           </p>
           <p>
