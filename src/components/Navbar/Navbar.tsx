@@ -371,7 +371,7 @@ const ResumeButton = ({ isOpen }: any): JSX.Element => {
   return (
     <ResumeButtonAnchor
       isOpen={isOpen}
-      href="/portfolio/public/documents/resume.pdf"
+      href="./public/documents/resume.pdf"
       target={"_blank"}
     >
       <Button
