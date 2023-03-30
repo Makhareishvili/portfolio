@@ -115,7 +115,7 @@ const ContentContainer = styled("div")(({ theme }) => ({
       fontSize: "67px",
     },
     "& > p:nth-of-type(3)": {
-      fontSize: "67px",
+      fontSize: "60px",
     },
     "& > p:nth-of-type(4)": {
       fontSize: "20px",
@@ -126,7 +126,7 @@ const ContentContainer = styled("div")(({ theme }) => ({
       fontSize: "77px",
     },
     "& > p:nth-of-type(3)": {
-      fontSize: "77px",
+      fontSize: "70px",
     },
   },
 }));
@@ -160,7 +160,7 @@ const Header = () => {
       <ContentContainer id="header">
         <p>Hola, my name is</p>
         <p>Levani Makhareishvili</p>
-        <p>Inter Front-end Developer.</p>
+        <p>Junior Front-end Developer.</p>
         <p>
           As a detail-oriented Front-end Developer, I am constantly striving to
           improve my skills and stay up-to-date with new technologies. With a

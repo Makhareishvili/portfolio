@@ -311,7 +311,7 @@ const Contact = () => {
           <ContactContainer>
             <Box>
               <LocalPhoneSharpIcon />
-              <p>+995 574 00 04 03</p>
+              <p>+995 571 00 04 03</p>
             </Box>
             <Box>
               <SendSharpIcon sx={{ rotate: "-45deg" }} />

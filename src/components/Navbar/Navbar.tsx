@@ -19,7 +19,7 @@ interface DefaultmainContainerProps {
 interface MainMenuContainerProps {
   isOpen: boolean;
 }
-interface BookButtonAnchorProps {
+interface ResumeButtonAnchorProps {
   isOpen: boolean;
 }
 const listLoad = keyframes({
@@ -213,7 +213,7 @@ const ListContainer = styled("div")`
     }
   }
 `;
-const BookButtonAnchor = styled("a")<BookButtonAnchorProps>`
+const ResumeButtonAnchor = styled("a")<ResumeButtonAnchorProps>`
   text-decoration: none;
   ${({ isOpen }) =>
     isOpen &&
@@ -367,16 +367,20 @@ const NavbarList = ({ setIsOpen, closeOpen }: NavbarListProps): JSX.Element => {
     </ul>
   );
 };
-const BookButton = ({ isOpen }: any): JSX.Element => {
+const ResumeButton = ({ isOpen }: any): JSX.Element => {
   return (
-    <BookButtonAnchor isOpen={isOpen} href="mailto:levanimakharei7li@gmail.com">
+    <ResumeButtonAnchor
+      isOpen={isOpen}
+      href="/portfolio/public/documents/resume.pdf"
+      target={"_blank"}
+    >
       <Button
         sx={{ backgroundColor: "#2c87e9", borderRadius: "20px" }}
         variant="contained"
       >
-        Book a meeting
+        Resume
       </Button>
-    </BookButtonAnchor>
+    </ResumeButtonAnchor>
   );
 };
 const Navbar = () => {
@@ -432,7 +436,7 @@ const Navbar = () => {
               style={{ display: breakPointTablet ? "none" : "flex" }}
             >
               <NavbarList />
-              <BookButton isOpen={true} />
+              <ResumeButton isOpen={true} />
             </ListContainer>
           </>
         ) : (
@@ -451,14 +455,14 @@ const Navbar = () => {
             <>
               <MainMenuContainer isOpen={true}>
                 <NavbarList setIsOpen={setIsOpen} closeOpen={closeOpen} />
-                <BookButton isOpen={isOpen} />
+                <ResumeButton isOpen={isOpen} />
               </MainMenuContainer>
             </>
           )}
           {closeOpen && !isOpen && (
             <MainMenuContainer isOpen={false}>
               <NavbarList />
-              <BookButton isOpen={isOpen} />
+              <ResumeButton isOpen={isOpen} />
             </MainMenuContainer>
           )}
         </>
