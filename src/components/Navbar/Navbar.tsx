@@ -369,7 +369,11 @@ const NavbarList = ({ setIsOpen, closeOpen }: NavbarListProps): JSX.Element => {
 };
 const ResumeButton = ({ isOpen }: any): JSX.Element => {
   return (
-    <ResumeButtonAnchor isOpen={isOpen} href="./resume.pdf" target={"_blank"}>
+    <ResumeButtonAnchor
+      isOpen={isOpen}
+      href="/portfolio/resume.pdf"
+      target={"_blank"}
+    >
       <Button
         sx={{ backgroundColor: "#2c87e9", borderRadius: "20px" }}
         variant="contained"
